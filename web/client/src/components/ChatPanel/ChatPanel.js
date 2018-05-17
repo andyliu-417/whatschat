@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./ChatPanel.css";
-import { Layout } from 'antd';
+import { Layout } from "antd";
 
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import ContactList from '../ContactList/ContactList';
-import ChatHeader from '../ChatHeader/ChatHeader';
-import ChatHistory from '../ChatHistory/ChatHistory';
-import ChatInput from '../ChatInput/ChatInput';
+import ContactList from "../ContactList/ContactList";
+import ChatHeader from "../ChatHeader/ChatHeader";
+import ChatHistory from "../ChatHistory/ChatHistory";
+import ChatInput from "../ChatInput/ChatInput";
 
 const { Header, Content, Sider, Footer } = Layout;
 
@@ -17,29 +18,31 @@ class ChatPanel extends Component {
   }
 
   componentDidMount() {}
-  
+
   render() {
     return (
       <Layout className="view chat">
         <Sider className="chat-sider" collapsible={false}>
-        {/* 聊天对象列表 */}
-          <ContactList contacts={this.state.contacts}></ContactList>
+          {/* 聊天对象列表 */}
+          <ContactList contacts={this.state.contacts} />
         </Sider>
-        <Content className='chat-content'>
+        <Content className="chat-content">
           <Layout className="view">
             <Header className="contact-title">
               {/* 聊天对象 */}
-              <ChatHeader></ChatHeader>
+              <Route path="/chat/:user" component={ChatHeader} />
+              {/* <ChatHeader></ChatHeader> */}
             </Header>
-            <Content style={{ background: '#F6F8FF' }}>
+            <Content style={{ background: "#F6F8FF" }}>
               <Layout className="view">
                 <Content className="chat-frame">
                   {/* 聊天框 */}
-                  <ChatHistory></ChatHistory>
+                  <Route path="/chat/:user" component={ChatHistory} />
+                  {/* <ChatHistory></ChatHistory> */}
                 </Content>
                 <Footer className="chat-input">
                   {/* 输入框*/}
-                  <ChatInput></ChatInput>
+                  <ChatInput />
                 </Footer>
               </Layout>
             </Content>
