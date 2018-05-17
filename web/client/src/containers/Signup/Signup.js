@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./Register.css";
+import "./Signup.css";
 
-class Register extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -10,8 +10,8 @@ class Register extends Component {
   componentDidMount() {}
   
   render() {
-    return <div>Register</div>;
+    return <div>Signup</div>;
   }
 }
 
-export default Register;
+export default Signup;
