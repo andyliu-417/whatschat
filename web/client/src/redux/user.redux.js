@@ -23,8 +23,8 @@ export function user(state = initState, action) {
       return {
         ...state,
         msg: "",
-        ...action.payload
-        // redirectTo: getRedirectPath(action.payload)
+        ...action.payload,
+        redirectTo: getRedirectPath(action.payload)
       };
     case ERROR_MSG:
       return {
@@ -37,15 +37,34 @@ export function user(state = initState, action) {
   }
 }
 
+export function login({ username, pwd }) {
+  // @andy_sync
+  if (!username || !pwd) {
+    return error_msg("用户名密码必须输入");
+  }
+
+  // @andy_async
+  return dispatch => {
+    axios.post("/user/login", { username, pwd }).then(res => {
+      if (res.status === 200 && res.data.code === 0) {
+        dispatch(auth_success(res.data.data));
+      } else {
+        dispatch(error_msg(res.data.msg));
+      }
+    });
+  };
+}
+
 export function regisger({ username, pwd, repeatpwd }) {
   // @andy_sync
-//   if (!username || !pwd) {
-//     return error_msg("用户名密码必须输入");
-//   }
-//   if (pwd !== repeatpwd) {
-//     return error_msg("密码和确认密码不同");
-//   }
-  console.log(username,pwd);
+  if (!username || !pwd) {
+    return error_msg("用户名密码必须输入");
+  }
+  if (pwd !== repeatpwd) {
+    return error_msg("密码和确认密码不同");
+  }
+
+  console.log(username, pwd);
 
   // @andy_async
   return dispatch => {

@@ -1,38 +1,35 @@
 import React, { Component } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
-import {connect} from 'react-redux';
-import {regisger} from '../../redux/user.redux';
+import { connect } from "react-redux";
+import { regisger } from "../../redux/user.redux";
 
-
-@connect(state => state.user, {regisger})
+@connect(state => state.user, { regisger })
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      pwd: '',
-      repeatpwd: ''
+      username: "",
+      pwd: "",
+      repeatpwd: ""
     };
   }
 
   componentDidMount() {}
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     console.log(this.state.username);
-    
+
     this.props.regisger(this.state);
+  };
 
-  }
-
-  handleChange = (event) => {
+  handleChange = event => {
     const field = event.target.name;
-const value = event.target.value;
-    
-    this.setState({[field]: value});
-  }
+    const value = event.target.value;
 
+    this.setState({ [field]: value });
+  };
 
   render() {
     return (
