@@ -3,6 +3,7 @@ import "./Signup.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { regisger } from "../../redux/user.redux";
+import {Redirect} from 'react-router-dom';
 
 @connect(state => state.user, { regisger })
 class Signup extends Component {
@@ -34,6 +35,7 @@ class Signup extends Component {
   render() {
     return (
       <div className="container">
+        {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
         <div className="card-panel signup-panel">
           <form className="col s12" action="/" onSubmit={this.handleSubmit}>
             <h4 className="center-align">Sign Up</h4>
