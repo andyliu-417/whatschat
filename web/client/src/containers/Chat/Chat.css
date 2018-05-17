@@ -1,0 +1,234 @@
+/* chat */
+.chat-container {
+  width: 70%;
+  margin: 0 auto;
+}
+.home {
+  position: relative;
+  height: 512px;
+  margin: 0 auto;
+}
+.home .header {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  text-align: right;
+  background: #f6f6f6;
+  padding: 0 20px;
+}
+.home .avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+}
+.home .sider {
+  height: 100%;
+}
+.home .status {
+  text-align: center;
+}
+.home .status li {
+  margin-top: 24px;
+}
+.home .avatar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.home .submenu {
+  padding-top: 48px;
+}
+/* chat */
+.chat-sider {
+  width: 240px;
+  background: #52649d;
+}
+.chat-content {
+  background: #52649d;
+}
+.chat-content .contact-title {
+  background: #fff;
+  height: 48px;
+  line-height: 48px;
+  padding: 0;
+}
+.chat-content .chat-frame {
+  position: relative;
+  background: #f6f8ff;
+}
+.chat-content .chat-input {
+  position: relative;
+  height: 120px;
+  min-height: 120px;
+  border-top: 1px solid #c7d1ed;
+  padding: 0;
+  background: #f6f8ff;
+}
+
+/* contact list */
+.contact-list {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.contact-list .form-wrap {
+  padding: 33px 40px 20px;
+}
+.contact-list .ant-select-arrow:before {
+  color: #738bd9;
+}
+.contact-list .form-wrap input::-webkit-input-placeholder {
+  color: #738bd9;
+}
+.contact-list .form-wrap .select-wrap {
+  border-radius: 4px;
+  overflow: hidden;
+}
+.contact-list .form-wrap .ant-form-item {
+  margin-bottom: 10px;
+}
+.contact-list .form-wrap .ant-form-item:last-child {
+  margin-bottom: 0;
+}
+.contact-list .contacts {
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  left: 0;
+  right: 0;
+}
+.contact-list .contacts::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(82, 100, 157);
+}
+.contact-list .contacts::-webkit-scrollbar-thumb {
+  background: rgb(60, 76, 128);
+  border-radius: 5px;
+}
+.contact-list li {
+  position: relative;
+}
+.contact-list li.contact-focus {
+  background-color: #3f5390;
+}
+.contact-list li:last-child:after {
+  display: none;
+}
+.contact-list .delete-contact-icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 7px;
+  z-index: 99;
+}
+
+/* chat title */
+.contacttitle-component {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-left: 60px;
+  padding-right: 64px;
+  box-shadow: 0 2px 8px 0 #e7edfe;
+  z-index: 1;
+}
+.contacttitle-component .photo-wrap {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.contacttitle-component .content-wrap {
+  position: relative;
+}
+.contacttitle-component .photo-wrap .ant-avatar > img {
+  border-radius: 50%;
+}
+.contacttitle-component .content-wrap h3 {
+  font-size: 14px;
+  color: #333;
+  font-weight: 100;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.contacttitle-component .content-wrap p {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* chat history */
+.chat-frame {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+.chat-frame .chatframe-spin {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+}
+.chat-frame .chatframe-spin .ant-spin-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+.chat-frame .contact-list {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.chat-frame .contact-list li {
+  margin: 20px auto;
+}
+.chat-frame .load-more {
+  text-align: center;
+  color: rgb(224, 224, 224);
+  cursor: pointer;
+  font-size: 12px;
+  height: 30px;
+  line-height: 42px;
+}
+
+/* chat input */
+.chatinput-component {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+.chatinput-component .input-wrap {
+  position: relative;
+  height: 100%;
+}
