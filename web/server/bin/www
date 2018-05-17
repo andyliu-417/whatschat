@@ -27,6 +27,7 @@ io.on('connection', function(socket) {
   // console.log('user login');
   socket.on('sendmsg', function(data) {
      console.log(data);
+     const {from, to, msg} = data;
      io.emit('recvmsg', data);
   })
 })

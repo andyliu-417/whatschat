@@ -45,3 +45,9 @@ export function getMsgList() {
         })
     }
 }
+
+export function sendMsg({from, to, msg}) {
+    return dispatch => {
+        socket.emit('sendmsg', {from, to, msg});
+    }
+}

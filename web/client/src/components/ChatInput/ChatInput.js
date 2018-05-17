@@ -2,10 +2,16 @@ import React, { Component } from "react";
 import "./ChatInput.css";
 import { Input, message } from "antd";
 // import io from "socket.io-client";
+import {connect} from 'react-redux';
+import {sendMsg} from '../../redux/chat.redux';
 
-const { TextArea } = Input;
 // const socket = io("ws://localhost:5000");
+const { TextArea } = Input;
 
+@connect(
+	state=>state,
+	{sendMsg}
+)
 class ChatInput extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +44,13 @@ class ChatInput extends Component {
     // 发送消息
     // 消除 onchange 会车字符
     // socket.emit("sendmsg", { content: this.state.content });
+    const from = this.props.user.username;
+    const to = this.props.match.params.user;
+    const msg = this.state.content;
+    console.log(to);
+    
+    this.props.sendMsg({from, to, msg});
+
     this.setState({ content: "" });
    
   };

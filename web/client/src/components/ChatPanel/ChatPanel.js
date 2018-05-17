@@ -42,7 +42,8 @@ class ChatPanel extends Component {
                 </Content>
                 <Footer className="chat-input">
                   {/* 输入框*/}
-                  <ChatInput />
+                  <Route path="/chat/:user" component={ChatInput} />
+                  {/* <ChatInput /> */}
                 </Footer>
               </Layout>
             </Content>
