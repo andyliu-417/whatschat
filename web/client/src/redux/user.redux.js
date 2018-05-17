@@ -10,6 +10,7 @@ const initState = {
 const AUTH_SUCCESS = "AUTH_SUCCESS";
 const ERROR_MSG = "ERROR_MSG";
 const LOAD_DATA = "LOAD_DATA";
+const LOGOUT = 'LOGOUT'
 
 function auth_success(data) {
   return { type: AUTH_SUCCESS, payload: data };
@@ -30,7 +31,7 @@ export function user(state = initState, action) {
         ...state,
         msg: "",
         ...action.payload,
-        redirectTo: "/"
+        redirectTo: "/chat/001"
 
       };
     case ERROR_MSG:
@@ -44,11 +45,15 @@ export function user(state = initState, action) {
         ...state,
         ...action.payload
       };
+      case LOGOUT:
+			return {...initState,redirectTo:'/login'}
     default:
       return state;
   }
 }
-
+export function logout(){
+	return { type:LOGOUT }
+}
 export function login({ username, pwd }) {
   // @andy_sync
   if (!username || !pwd) {
