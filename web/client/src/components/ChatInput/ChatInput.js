@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./ChatInput.css";
 import { Input, message } from "antd";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 
 const { TextArea } = Input;
-const socket = io("ws://localhost:5000");
+// const socket = io("ws://localhost:5000");
 
 class ChatInput extends Component {
   constructor(props) {
@@ -16,12 +16,12 @@ class ChatInput extends Component {
   }
 
   componentDidMount() {
-    socket.on("recvmsg", (data) => {
-      this.setState({
-        msg: [...this.state.msg, data.content]
-      });
-      console.log(data);
-    });
+    // socket.on("recvmsg", (data) => {
+    //   this.setState({
+    //     msg: [...this.state.msg, data.content]
+    //   });
+    //   console.log(data);
+    // });
   }
 
   // 输入聊天内容
@@ -37,7 +37,7 @@ class ChatInput extends Component {
     }
     // 发送消息
     // 消除 onchange 会车字符
-    socket.emit("sendmsg", { content: this.state.content });
+    // socket.emit("sendmsg", { content: this.state.content });
     this.setState({ content: "" });
    
   };

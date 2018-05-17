@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var util = require('../utils/util');
 var User = require('mongoose').model('User');
+var Chat = require('mongoose').model('Chat');
 
 const _filter = {'pwd':0,'__v':0}
 
@@ -74,6 +75,17 @@ router.get('/friendlist',function(req, res){
 	User.find({},function(err,doc){
 		return res.json({code:0,data:doc});
 	})
+})
+
+router.get('/getMsgList', function(req, res) {
+	const user = req.cookies.user;
+	// Chat.find({'$or':[{}]})
+	Chat.find({}, function(err,doc) {
+		if(!err) {
+			return res.json({code:0, msgs:doc});
+		}
+	});
+	
 })
 
 module.exports = router;

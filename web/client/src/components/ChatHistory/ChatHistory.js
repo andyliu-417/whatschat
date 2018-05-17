@@ -1,13 +1,24 @@
 import React, { Component } from "react";
 import "./ChatHistory.css";
 import {Spin} from 'antd';
+
+
+import {connect} from 'react-redux';
+import {getMsgList} from '../../redux/chat.redux';
+
+@connect(
+	state=>state.chat,
+	{getMsgList}
+)
 class ChatHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getMsgList(); 
+  }
   
   render() {
     return (
