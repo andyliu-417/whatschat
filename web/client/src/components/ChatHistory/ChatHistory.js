@@ -5,10 +5,10 @@ import {Spin} from 'antd';
 
 import {connect} from 'react-redux';
 import {getMsgList} from '../../redux/chat.redux';
-
+import {recvMsg} from '../../redux/chat.redux';
 @connect(
 	state=>state.chat,
-	{getMsgList}
+	{getMsgList, recvMsg}
 )
 class ChatHistory extends Component {
   constructor(props) {
@@ -17,7 +17,8 @@ class ChatHistory extends Component {
   }
 
   componentDidMount() {
-    this.props.getMsgList(); 
+    this.props.getMsgList();
+    this.props.recvMsg()
   }
   
   render() {
@@ -28,9 +29,9 @@ class ChatHistory extends Component {
           {/* 聊天记录 */}
         {this.props.match.params.user}
           
-          <p>11</p>
-          <p>22</p>
-          <p>33</p>
+        {this.props.chatmsg.map(v=>{
+          return <p key={v._id}>{v.content}</p>
+        })}
         </ul>
       </div>
     );
