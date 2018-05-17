@@ -10,7 +10,7 @@ class Routes extends React.Component {
     return (
       <BrowserRouter>
         <div>
-		  {/* <Auth /> */}
+		  <Auth />
 		  <App />
           <Switch>
             <Route path="/login" component={Login} />

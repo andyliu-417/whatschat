@@ -9,6 +9,7 @@ const initState = {
 
 const AUTH_SUCCESS = "AUTH_SUCCESS";
 const ERROR_MSG = "ERROR_MSG";
+const LOAD_DATA = "LOAD_DATA";
 
 function auth_success(data) {
   return { type: AUTH_SUCCESS, payload: data };
@@ -16,6 +17,11 @@ function auth_success(data) {
 function error_msg(msg) {
   return { type: ERROR_MSG, msg: msg };
 }
+
+function load_data(data) {
+  return { type: LOAD_DATA, payload: data };
+}
+
 // reducer
 export function user(state = initState, action) {
   switch (action.type) {
@@ -24,13 +30,19 @@ export function user(state = initState, action) {
         ...state,
         msg: "",
         ...action.payload,
-        redirectTo: getRedirectPath(action.payload)
+        redirectTo: "/"
+
       };
     case ERROR_MSG:
       return {
         ...state,
         msg: action.msg,
         error: true
+      };
+    case LOAD_DATA:
+      return {
+        ...state,
+        ...action.payload
       };
     default:
       return state;
@@ -73,6 +85,20 @@ export function regisger({ username, pwd, repeatpwd }) {
         dispatch(auth_success(res.data.data));
       } else {
         dispatch(error_msg(res.data.msg));
+      }
+    });
+  };
+}
+
+export function loadData() {
+  return dispatch => {
+    axios.get("/user/info").then(res => {
+      if (res.status === 200) {
+        if (res.data.code === 0) {
+          dispatch(load_data(res.data.data));
+        } else {
+          dispatch(error_msg(res.data.msg));
+        }
       }
     });
   };

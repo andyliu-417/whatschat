@@ -51,4 +51,24 @@ router.post('/login', function(req,res){
 	})
 })
 
+
+
+router.get('/info', function(req, res, next) {
+  const {userid} = req.cookies;
+	if (!userid) {
+		return res.json({code:1});
+	}
+	User.findOne({_id:userid} ,_filter , function(err,doc){
+		if (err) {
+			return res.json({code:1, msg:'后端出错了'});
+		}
+		if (doc) {
+			return res.json({code:0,data:doc});
+		} else {
+			return res.json({code:1, msg:'no data'});
+    }
+	})
+});
+
+
 module.exports = router;

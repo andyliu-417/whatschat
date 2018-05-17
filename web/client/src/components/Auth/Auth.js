@@ -1,16 +1,42 @@
-import React, { Component } from "react";
-import "./Auth.css";
+import React from "react";
+import { withRouter } from "react-router-dom";
 
-class Auth extends Component {
+import { connect } from "react-redux";
+import { loadData } from "../../redux/user.redux";
+
+import { Redirect } from "react-router-dom";
+
+// Auth is a common component, not a <Route>
+@withRouter
+@connect(state => state.user, { loadData })
+class Auth extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      otherPage: false
+    };
   }
 
-  componentDidMount() {}
-  
+  componentDidMount() {
+    const publicList = ["/login", "/register"];
+    const pathname = this.props.location.pathname;
+    if (publicList.indexOf(pathname) > -1) {
+      return null;
+    }
+
+    this.setState({ otherPage: true });
+
+    this.props.loadData();
+  }
+
   render() {
-    return <div>Auth</div>;
+    return (
+      <div>
+        {this.props.error && this.state.otherPage ? (
+          <Redirect to="/login" />
+        ) : null}
+      </div>
+    );
   }
 }
 
