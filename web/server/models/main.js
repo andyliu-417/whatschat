@@ -5,3 +5,5 @@ mongoose.connect(config.mongoDbUri);
 
 // load models
 require('./user');
+require('./chat');
+
