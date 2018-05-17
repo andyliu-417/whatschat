@@ -70,5 +70,10 @@ router.get('/info', function(req, res, next) {
 	})
 });
 
+router.get('/friendlist',function(req, res){
+	User.find({},function(err,doc){
+		return res.json({code:0,data:doc});
+	})
+})
 
 module.exports = router;

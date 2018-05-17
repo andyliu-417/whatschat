@@ -41,6 +41,9 @@ class Chat extends Component {
                     </div>
                   }
                 >
+                  <Menu.Item key="setup1">
+                    {this.props.username}
+                  </Menu.Item>
                   <Menu.Item key="setup" disabled={true}>
                     <Icon type="setting" />设置
                   </Menu.Item>
