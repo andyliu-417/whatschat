@@ -1,30 +1,55 @@
 import React, { Component } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux';
+import {regisger} from '../../redux/user.redux';
 
+
+@connect(state => state.user, {regisger})
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      username: '',
+      pwd: '',
+      repeatpwd: ''
+    };
   }
 
   componentDidMount() {}
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state.username);
+    
+    this.props.regisger(this.state);
+
+  }
+
+  handleChange = (event) => {
+    const field = event.target.name;
+const value = event.target.value;
+    
+    this.setState({[field]: value});
+  }
+
 
   render() {
     return (
       <div className="container">
         <div className="card-panel signup-panel">
-          <form className="col s12" action="/" >
+          <form className="col s12" action="/" onSubmit={this.handleSubmit}>
             <h4 className="center-align">Sign Up</h4>
             <div className="row">
               <div className="input-field col s12">
                 <input
-                  id="email"
-                  type="email"
-                  name="email"
+                  id="username"
+                  type="text"
+                  name="username"
                   className="validate"
+                  onChange={this.handleChange}
                 />
-                <label htmlFor="email">Email</label>
+                <label htmlFor="username">Username</label>
               </div>
             </div>
 
@@ -33,8 +58,9 @@ class Signup extends Component {
                 <input
                   id="password"
                   type="password"
-                  name="password"
+                  name="pwd"
                   className="validate"
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="password">Password</label>
               </div>
@@ -45,8 +71,9 @@ class Signup extends Component {
                 <input
                   id="confirm_password"
                   type="password"
-                  name="confirm_password"
+                  name="repeatpwd"
                   className="validate"
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="confirm_password">Confirm Password</label>
               </div>
@@ -60,7 +87,6 @@ class Signup extends Component {
             </div>
             <div className="row">
               <p className="right-align">
-                {" "}
                 Already have an account? <Link to="/login">Login</Link>
               </p>
             </div>
