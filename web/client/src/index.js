@@ -16,7 +16,7 @@ const store = createStore(
   reducers,
   compose(
     applyMiddleware(thunk), // Async redux
-    window.devToolsExtension ? window.devToolsExtension() : () => {}
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
 ReactDOM.render(
