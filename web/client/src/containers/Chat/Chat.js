@@ -37,7 +37,7 @@ class Chat extends Component {
                 <SubMenu
                   title={
                     <div className="avatar">
-                      <img
+                      <img alt="user"
                         src={require(`../../components/avatars/${avatar}.png`)}
                       />
                     </div>

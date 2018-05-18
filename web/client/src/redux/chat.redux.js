@@ -48,7 +48,7 @@ function msgRecv(msg, msgs) {
   let addUnread = true;
   const userid = localStorage.getItem("userid");
   if (msg.from === userid) addUnread = false;
-  if (msg.chatid.indexOf(userid) == -1) addUnread = false;
+  if (msg.chatid.indexOf(userid) === -1) addUnread = false;
 
   let flag = true;
   msgs.forEach(v => {

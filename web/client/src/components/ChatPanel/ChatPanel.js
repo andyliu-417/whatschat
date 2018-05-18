@@ -9,10 +9,7 @@ import ChatInput from "../ChatInput/ChatInput";
 const { Header, Content, Sider, Footer } = Layout;
 
 class ChatPanel extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
     return (
       <Layout className="view chat">

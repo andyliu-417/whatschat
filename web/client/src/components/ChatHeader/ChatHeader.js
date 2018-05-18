@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Avatar } from "antd";
 import { connect } from "react-redux";
 import { readMsg } from "../../redux/chat.redux";
-import {compare} from '../../helpers/util';
 
 @connect(state => state.chat, { readMsg })
 class ChatHeader extends Component {

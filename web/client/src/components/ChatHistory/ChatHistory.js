@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Spin, List, Avatar } from "antd";
 import { connect } from "react-redux";
 import {showTime, makeChatid} from '../../helpers/util';
-import { Col } from "antd";
 
 @connect(state => state.chat)
 class ChatHistory extends Component {
