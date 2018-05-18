@@ -39,6 +39,7 @@ class ContactList extends Component {
     const contacts = this.props.friendList;
     const userid = this.props.user._id;
     const userInfo = this.props.chat.users;
+    console.log(chatList);
     
     return (
       <div className="contact-list">
@@ -47,13 +48,15 @@ class ContactList extends Component {
           renderItem={item => {
             const lastItem = this.getLastMsg(item);
             const targetid = lastItem.from===userid?lastItem.to:lastItem.from;
+            const unreadNum = item.filter(v=>!v.read&&v.to===targetid).length;
+            console.log(unreadNum);
             return (
               <List.Item
               onClick={() => this.props.history.push(`/chat/${targetid}`)}
               >
                 <List.Item.Meta
                   avatar={
-                    <Badge count={5}>
+                    <Badge count={unreadNum}>
                       <Avatar
                       size="large"
                       shape="circle"

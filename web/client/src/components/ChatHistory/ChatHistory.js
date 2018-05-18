@@ -15,8 +15,6 @@ class ChatHistory extends Component {
 
   componentDidMount() {
     if (!this.props.chatmsg.length) {
-      console.log("length 0 ");
-      
       // this.props.getMsgList();
       // this.props.recvMsg();
     }
