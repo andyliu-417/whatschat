@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Spin, List, Avatar } from "antd";
 import { connect } from "react-redux";
-import { getMsgList, recvMsg} from "../../redux/chat.redux";
 import {showTime} from '../../helpers/util';
 
-@connect(state => state.chat, { getMsgList, recvMsg })
+@connect(state => state.chat)
 class ChatHistory extends Component {
   constructor(props) {
     super(props);

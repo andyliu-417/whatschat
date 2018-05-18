@@ -38,14 +38,20 @@ export function chat(state = initState, action) {
   }
 }
 
-function msgRecv(msg) {
-  return { type: MSG_RECV, payload: msg };
+function msgRecv(msg, msgs) {
+  let flag = true;
+  msgs.forEach(v => {
+      if (v._id === msg._id) {
+        flag = false;
+      }
+  });
+  return flag?({ type: MSG_RECV, payload: msg }):null;
 }
 
 export function recvMsg() {
-  return dispatch => {
+  return (dispatch, getState) => {
     socket.on("recvmsg", function(data) {
-      dispatch(msgRecv(data));
+      dispatch(msgRecv(data, getState().chat.chatmsg));
     });
   };
 }
