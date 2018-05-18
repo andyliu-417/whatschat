@@ -46,7 +46,7 @@ class ChatInput extends Component {
     // socket.emit("sendmsg", { content: this.state.content });
     const from = this.props.user.username;
     const to = this.props.match.params.user;
-    const msg = this.state.content;
+    const msg = verifyContent;
     console.log(to);
     
     this.props.sendMsg({from, to, msg});
@@ -56,7 +56,7 @@ class ChatInput extends Component {
   };
   // 输入字符时变化内容
   handleChange = e => {
-    this.setState({ content: e.target.value.trim() });
+    this.setState({ content: e.target.value });
   };
   // 监听回车键
   handleEnter = e => {
