@@ -12,13 +12,11 @@ class ChatHeader extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    if (!this.props.chatmsg.length) {
-      this.props.getMsgList();
-    }
-    // const to = this.props.match.params.user;
-    // this.props.readMsg(to);
-  }
+  // componentDidMount() {
+  //   if (!this.props.chatmsg.length) {
+  //     this.props.getMsgList();
+  //   }
+  // }
 
   render() {
     const userid = this.props.match.params.user;
