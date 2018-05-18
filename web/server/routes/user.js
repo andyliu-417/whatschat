@@ -84,7 +84,7 @@ router.get('/getMsgList', function(req, res) {
 			return res.json({code:1, msg:'后端出错了'});
 		}
 		if (user) {
-			Chat.find({'$or':[{from:user.username}, {to:user.username}]}, function(err,doc) {
+			Chat.find({'$or':[{from:user._id}, {to:user._id}]}, function(err,doc) {
 				if(!err) {
 					User.find({},function(err,allusers){
 						var users = {};
