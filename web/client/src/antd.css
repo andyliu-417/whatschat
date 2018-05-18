@@ -1,0 +1,73 @@
+/* antd patch css */
+.ant-layout-content {
+  position: relative;
+}
+.ant-menu-inline, .ant-menu-vertical {
+  border-right: 0;
+  background: #3C4C80;
+}
+
+.ant-menu-submenu-vertical > .ant-menu-submenu-title .ant-menu-submenu-arrow:before, .ant-menu-submenu-vertical-left > .ant-menu-submenu-title .ant-menu-submenu-arrow:before, .ant-menu-submenu-vertical-right > .ant-menu-submenu-title .ant-menu-submenu-arrow:before, .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow:before {
+  display: none;
+}
+.ant-menu-submenu-vertical > .ant-menu-submenu-title .ant-menu-submenu-arrow:after, .ant-menu-submenu-vertical-left > .ant-menu-submenu-title .ant-menu-submenu-arrow:after, .ant-menu-submenu-vertical-right > .ant-menu-submenu-title .ant-menu-submenu-arrow:after, .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow:after {
+  display: none;
+}
+
+.ant-menu-horizontal > .ant-menu-item:hover, .ant-menu-horizontal > .ant-menu-submenu:hover,
+.ant-menu-horizontal > .ant-menu-item-active, .ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open, .ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected, .ant-menu-horizontal > .ant-menu-submenu-selected {
+  border-bottom: 0;
+}
+.ant-menu-submenu-vertical > .ant-menu-submenu-title:after {
+  display: none;
+}
+.ant-menu-horizontal {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 0;
+  background-color: transparent;
+}
+.ant-menu-horizontal > .ant-menu-item,
+.ant-menu-horizontal > .ant-menu-submenu {
+  top: 0;
+  float: right;
+  border-bottom: 0;
+}
+.ant-avatar {
+  vertical-align: middle;
+}
+.ant-input:focus {
+  box-shadow: none;
+}
+.ant-modal-header {
+  background: #4380DF;
+  padding: 6px 16px;
+}
+.ant-modal-title {
+  font-size: 14px;
+  color: #FFFFFF;
+}
+.ant-tabs-bar {
+  margin-bottom: 0;
+}
+.ant-upload-list-item-name {
+  padding-left: 24px!important;
+}
+.ant-layout-sider-children {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.has-error .ant-input:not([disabled]):hover {
+  border: 0;
+}
+.has-error .ant-input:focus {
+  box-shadow: none;
+}
+.ant-checkbox-wrapper + span, .ant-checkbox + span {
+  padding-left: 6px;
+}

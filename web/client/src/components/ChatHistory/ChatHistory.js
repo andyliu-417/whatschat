@@ -37,7 +37,6 @@ class ChatHistory extends Component {
         {/* 聊天记录 */}
 
         <List
-          itemLayout="horizontal"
           dataSource={msgs}
           renderItem={item =>
             item.from === userid ? (
@@ -48,7 +47,7 @@ class ChatHistory extends Component {
                       src={require(`../avatars/${users[userid].avatar}.png`)}
                     />
                   }
-                  title={item.create_time}
+                  // title={item.create_time}
                   description={item.content}
                 />
               </List.Item>
@@ -60,7 +59,7 @@ class ChatHistory extends Component {
                       src={require(`../avatars/${avatar}.png`)}
                     />
                   }
-                  title={item.create_time}
+                  // title={item.create_time}
                   description={item.content}
                 />
               </List.Item>
