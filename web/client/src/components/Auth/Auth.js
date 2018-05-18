@@ -6,7 +6,6 @@ import { loadData } from "../../redux/user.redux";
 
 import { Redirect } from "react-router-dom";
 
-// Auth is a common component, not a <Route>
 @withRouter
 @connect(state => state.user, { loadData })
 class Auth extends React.Component {
@@ -23,7 +22,6 @@ class Auth extends React.Component {
     if (publicList.indexOf(pathname) > -1) {
       return null;
     }
-
     this.setState({ otherPage: true });
 
     this.props.loadData();

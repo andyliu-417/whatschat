@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import "./ContactList.css";
 import { List, Avatar, Badge } from "antd";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import {getMsgList, recvMsg} from '../../redux/chat.redux';
-
+import {compare} from '../../helpers/util';
 
 @connect(state => state, {getMsgList, recvMsg})
 @withRouter
@@ -17,10 +16,8 @@ class ContactList extends Component {
   componentDidMount() {
     if (!this.props.chat.chatmsg.length) {
       this.props.getMsgList();
-      
       this.props.recvMsg(); 
     }
-    // this.props.getFriendList();
   }
   getLastMsg(arr) {
     return arr[arr.length - 1];
@@ -31,12 +28,12 @@ class ContactList extends Component {
       msgGroup[v.chatid] = msgGroup[v.chatid] || [];
       msgGroup[v.chatid].push(v);
     });
-    // const chatList = Object.values(msgGroup);
-    const chatList = Object.values(msgGroup).sort((a,b) => {
-      const a_last = this.getLastMsg(a).create_time;
-      const b_last = this.getLastMsg(b).create_time;
-      return b_last - a_last;
-    });
+    // const chatList = Object.values(msgGroup).sort((a,b) => {
+    //   const a_last = this.getLastMsg(a).create_time;
+    //   const b_last = this.getLastMsg(b).create_time;
+    //   return b_last - a_last;
+    // });
+    const chatList = Object.values(msgGroup).sort(compare());
     
     const userid = this.props.user._id;
     const userInfo = this.props.chat.users;
@@ -46,7 +43,8 @@ class ContactList extends Component {
         <List
           dataSource={chatList}
           renderItem={item => {
-            const lastItem = this.getLastMsg(item);
+            // const lastItem = this.getLastMsg(item);
+            const lastItem = item[item.length-1];
             const targetid = lastItem.from===userid?lastItem.to:lastItem.from;
             const unreadNum = item.filter(v=>!v.read&&v.from===targetid).length;
             return (

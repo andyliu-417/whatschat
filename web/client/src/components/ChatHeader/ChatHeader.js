@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ChatHeader.css";
 import { Avatar } from "antd";
 
 import { connect } from "react-redux";

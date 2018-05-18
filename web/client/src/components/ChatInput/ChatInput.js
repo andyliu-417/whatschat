@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ChatInput.css";
 import { Input, message } from "antd";
 // import io from "socket.io-client";
 import { connect } from "react-redux";

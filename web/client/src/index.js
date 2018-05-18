@@ -4,7 +4,7 @@ import "./index.css";
 import "antd/dist/antd.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min.js";
-import registerServiceWorker from "./registerServiceWorker";
+import registerServiceWorker from "./helpers/registerServiceWorker";
 import Routes from "./routes";
 
 import { createStore, applyMiddleware, compose } from "redux";

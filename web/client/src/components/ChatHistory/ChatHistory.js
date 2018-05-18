@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ChatHistory.css";
 import { Spin, List, Avatar } from "antd";
 
 import { connect } from "react-redux";

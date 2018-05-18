@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./ChatPanel.css";
 import { Layout } from "antd";
 
 import { Route } from "react-router-dom";

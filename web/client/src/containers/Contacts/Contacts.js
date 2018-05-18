@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import "./Contacts.css";
 import { connect } from "react-redux";
 import { getFriendList } from "../../redux/friend.redux";
 import { List, Avatar } from "antd";
 
-// import {getMsgList} from '../../redux/chat.redux';
 
 @connect(
 	state=>state.friend,
