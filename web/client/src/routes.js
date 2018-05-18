@@ -17,9 +17,9 @@ class Routes extends React.Component {
           <App />
           <Switch>
             {/* <Route path="/chat/:user" component={Chat} /> */}
-            <Route exat path="/" component={Chat} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/" component={Chat} />            
             {/* <Route path="/contacts" component={Contacts} /> */}
           </Switch>
         </div>

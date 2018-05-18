@@ -34,7 +34,9 @@ export function user(state = initState, action) {
         ...state,
         msg: "",
         ...action.payload,
-        redirectTo: "/chat/" + action.payload._id
+        // redirectTo: "/chat/" + action.payload._id
+        redirectTo: "/chat"
+        
       };
     case ERROR_MSG:
       return {
