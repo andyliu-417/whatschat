@@ -38,18 +38,17 @@ class Chat extends Component {
                   title={
                     <div className="avatar">
                       <img
-                        alt="用户"
                         src={require(`../../components/avatars/${avatar}.png`)}
                       />
                     </div>
                   }
                 >
-                  <Menu.Item key="setup1">{username}</Menu.Item>
-                  <Menu.Item key="setup" disabled={true}>
-                    <Icon type="setting" />设置
+                  <Menu.Item key="username">
+                    <Icon type="user" />
+                    {username}
                   </Menu.Item>
                   <Menu.Item key="logout" onClick={this.logout}>
-                    <Icon type="logout" />注销
+                    <Icon type="logout" />Logout
                   </Menu.Item>
                 </SubMenu>
               </Menu>

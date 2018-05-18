@@ -13,6 +13,7 @@ class Contacts extends Component {
     this.state = {};
   }
   componentDidMount() {
+    if(!this.props.friendList.length)
     this.props.getFriendList();
   }
 
