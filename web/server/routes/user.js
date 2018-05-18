@@ -78,13 +78,31 @@ router.get('/friendlist',function(req, res){
 })
 
 router.get('/getMsgList', function(req, res) {
-	const user = req.cookies.user;
-	// Chat.find({'$or':[{}]})
-	Chat.find({}, function(err,doc) {
-		if(!err) {
-			return res.json({code:0, msgs:doc});
+	
+
+	const userid = req.cookies.userid;
+	User.findOne({_id:userid}, _filter, function(err, user) {
+		if (err) {
+			return res.json({code:1, msg:'后端出错了'});
+		}
+		if (user) {
+			Chat.find({'$or':[{from:user.username}, {to:user.username}]}, function(err,doc) {
+				if(!err) {
+					User.find({},function(err,allusers){
+						var users = {};
+						allusers.forEach(v=>{
+							users[v._id] = {username:v.username, avatar:v.avatar};
+						});
+						return res.json({code:0,users:users, msgs:doc});
+					})
+					// return res.json({code:0, msgs:doc});
+				}
+			});
+		} else {
+			return res.json({code:1, msgs:'no data'});
 		}
 	});
+	
 	
 })
 

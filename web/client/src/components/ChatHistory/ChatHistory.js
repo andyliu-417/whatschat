@@ -19,6 +19,7 @@ class ChatHistory extends Component {
 
   render() {
     const user = this.props.match.params.user;
+    const msgs = this.props.chatmsg.filter(v=>(v.from===user || v.to===user));
     return (
       <div className="chat-frame">
         <Spin size="large" className="chat-frame-spin" spinning={false} />
@@ -27,7 +28,8 @@ class ChatHistory extends Component {
         <List
         bordered="true"
           itemLayout="horizontal"
-          dataSource={this.props.chatmsg}
+          // dataSource={this.props.chatmsg}
+          dataSource={msgs}
           renderItem={item =>
             item.from === user ? (
               <List.Item>
