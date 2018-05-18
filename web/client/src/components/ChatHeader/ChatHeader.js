@@ -21,9 +21,6 @@ class ChatHeader extends Component {
   render() {
     return (
       <div className="contacttitle-component">
-        <div className="photo-wrap">
-          <Avatar shape="circle" src={this.state.contact.contactAvatar} />
-        </div>
         <div className="content-wrap">
         {this.props.match.params.user}
         </div>

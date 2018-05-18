@@ -36,7 +36,7 @@ class Chat extends Component {
                     <div className="avatar">
                       <img
                         alt="用户"
-                        src="https://s3.amazonaws.com/uifaces/faces/twitter/victorDubugras/128.jpg"
+                        src={require(`../../components/avatars/${this.props.avatar}.png`)}
                       />
                     </div>
                   }

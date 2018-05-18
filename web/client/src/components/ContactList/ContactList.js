@@ -38,7 +38,7 @@ class ContactList extends Component {
                   <Avatar
                     size="large"
                     shape="circle"
-                    src="https://s3.amazonaws.com/uifaces/faces/twitter/victorDubugras/128.jpg"
+                    src={require(`../avatars/${item.avatar}.png`)}
                   />
                   </Badge>
 

@@ -4,7 +4,8 @@ const initState = {
   error: false,
   redirectTo: "",
   msg: "",
-  username: ""
+  username: "",
+  avatar: ""
 };
 
 const AUTH_SUCCESS = "AUTH_SUCCESS";
@@ -31,8 +32,8 @@ export function user(state = initState, action) {
         ...state,
         msg: "",
         ...action.payload,
-        redirectTo: "/chat/"+action.payload.username
-
+        redirectTo: "/chat/"+action.payload.username,
+        avatar: action.payload.avatar
       };
     case ERROR_MSG:
       return {
@@ -81,8 +82,7 @@ export function regisger({ username, pwd, repeatpwd, avatar}) {
     return error_msg("密码和确认密码不同");
   }
 
-  
-  console.log(username, pwd);
+  console.log(username, avatar);
 
   // @andy_async
   return dispatch => {

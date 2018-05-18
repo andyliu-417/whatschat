@@ -20,7 +20,7 @@ router.get('/list',function(req, res){
 
 router.post('/register', function(req, res){
   const {username, pwd, avatar} = req.body;
-  console.log(username, pwd);
+  console.log(username, avatar);
 	User.findOne({username}, function(err,doc){
 		if (doc) {
 			return res.json({code:1, msg:'用户名重复'});
@@ -32,9 +32,9 @@ router.post('/register', function(req, res){
 				return res.json({code:1,msg:'后端出错了'});
       }
       // set cookie after register
-      const {username, _id} = d;
+      const {username, _id, avatar} = d;
   		res.cookie('userid', _id);    
-			return res.json({code:0,data: {username, _id}});
+			return res.json({code:0,data: {username, _id, avatar}});
 		});
 	});
 });
