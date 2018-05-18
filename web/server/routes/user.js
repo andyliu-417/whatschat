@@ -62,7 +62,7 @@ router.post("/readmsg", function(req, res) {
     { multi: true },
     function(err, doc) {
       if (!err) {
-        return res.json({ code: 0 });
+        return res.json({ code: 0, num: doc.nModified });
       }
       return res.json({ code: 1 });
     }
