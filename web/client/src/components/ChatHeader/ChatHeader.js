@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Avatar } from "antd";
-
 import { connect } from "react-redux";
 import { getMsgList } from "../../redux/chat.redux";
 import { readMsg } from "../../redux/chat.redux";
@@ -15,7 +14,6 @@ class ChatHeader extends Component {
   componentDidMount() {
     if (!this.props.chatmsg.length) {
       this.props.getMsgList();
-      // this.props.recvMsg();
     }
     const to = this.props.match.params.user;
     this.props.readMsg(to);
@@ -30,7 +28,10 @@ class ChatHeader extends Component {
     return (
       <div className="contacttitle-component">
         <div className="photo-wrap">
-          <Avatar shape="circle" src={require(`../avatars/${users[userid].avatar}.png`)} />
+          <Avatar
+            shape="circle"
+            src={require(`../avatars/${users[userid].avatar}.png`)}
+          />
         </div>
         <div className="content-wrap">{users[userid].username}</div>
       </div>

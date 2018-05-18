@@ -5,8 +5,7 @@ import ChatPanel from "../../components/ChatPanel/ChatPanel";
 import browserCookie from "browser-cookies";
 import { connect } from "react-redux";
 import { logout } from "../../redux/user.redux";
-import { Redirect } from "react-router-dom";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Contacts from "../Contacts/Contacts";
 
 const { Content, Sider } = Layout;
@@ -18,8 +17,6 @@ class Chat extends Component {
     super(props);
     this.state = {};
   }
-
-  componentDidMount() {}
 
   logout = () => {
     browserCookie.erase("userid");
@@ -34,7 +31,7 @@ class Chat extends Component {
       <div className="chat-container">
         {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
         <Layout className="view home">
-          <Sider width={70} style={{ background: "#3C4C80" }}>
+          <Sider width={70} style={{ background: "#00bfa5" }}>
             <div className="submenu">
               <Menu>
                 <SubMenu

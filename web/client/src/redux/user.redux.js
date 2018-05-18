@@ -12,17 +12,6 @@ const ERROR_MSG = "ERROR_MSG";
 const LOAD_DATA = "LOAD_DATA";
 const LOGOUT = "LOGOUT";
 
-function auth_success(data) {
-  return { type: AUTH_SUCCESS, payload: data };
-}
-function error_msg(msg) {
-  return { type: ERROR_MSG, msg: msg };
-}
-
-function load_data(data) {
-  return { type: LOAD_DATA, payload: data };
-}
-
 // reducer
 export function user(state = initState, action) {
   switch (action.type) {
@@ -34,9 +23,7 @@ export function user(state = initState, action) {
         ...state,
         msg: "",
         ...action.payload,
-        // redirectTo: "/chat/" + action.payload._id
         redirectTo: "/contacts"
-        
       };
     case ERROR_MSG:
       return {
@@ -55,16 +42,28 @@ export function user(state = initState, action) {
       return state;
   }
 }
+
+function auth_success(data) {
+  return { type: AUTH_SUCCESS, payload: data };
+}
+
+function error_msg(msg) {
+  return { type: ERROR_MSG, msg: msg };
+}
+
+function load_data(data) {
+  return { type: LOAD_DATA, payload: data };
+}
+
 export function logout() {
   return { type: LOGOUT };
 }
+
 export function login({ username, pwd }) {
-  // @andy_sync
   if (!username || !pwd) {
-    return error_msg("用户名密码必须输入");
+    return error_msg("error");
   }
 
-  // @andy_async
   return dispatch => {
     axios.post("/user/login", { username, pwd }).then(res => {
       if (res.status === 200 && res.data.code === 0) {
@@ -79,15 +78,12 @@ export function login({ username, pwd }) {
 export function regisger({ username, pwd, repeatpwd, avatar }) {
   // @andy_sync
   if (!username || !pwd) {
-    return error_msg("用户名密码必须输入");
+    return error_msg("error");
   }
   if (pwd !== repeatpwd) {
-    return error_msg("密码和确认密码不同");
+    return error_msg("error");
   }
 
-  console.log(username, avatar);
-
-  // @andy_async
   return dispatch => {
     axios.post("/user/register", { username, pwd, avatar }).then(res => {
       if (res.status === 200 && res.data.code === 0) {
