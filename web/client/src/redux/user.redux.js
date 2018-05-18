@@ -27,13 +27,14 @@ function load_data(data) {
 export function user(state = initState, action) {
   switch (action.type) {
     case AUTH_SUCCESS:
-      localStorage.setItem("username", action.payload.username);
+      localStorage.setItem("userid", action.payload._id);
+      localStorage.setItem("username", action.payload.username);      
       localStorage.setItem("avatar", action.payload.avatar);
       return {
         ...state,
         msg: "",
         ...action.payload,
-        redirectTo: "/chat/" + action.payload.username
+        redirectTo: "/chat/" + action.payload._id
       };
     case ERROR_MSG:
       return {

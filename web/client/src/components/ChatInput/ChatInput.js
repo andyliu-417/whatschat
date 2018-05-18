@@ -44,7 +44,7 @@ class ChatInput extends Component {
     // 发送消息
     // 消除 onchange 会车字符
     // socket.emit("sendmsg", { content: this.state.content });
-    const from = this.props.user.username;
+    const from = this.props.user._id;
     const to = this.props.match.params.user;
     const msg = verifyContent;
     console.log(to);

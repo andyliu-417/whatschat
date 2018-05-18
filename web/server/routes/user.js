@@ -78,8 +78,6 @@ router.get('/friendlist',function(req, res){
 })
 
 router.get('/getMsgList', function(req, res) {
-	
-
 	const userid = req.cookies.userid;
 	User.findOne({_id:userid}, _filter, function(err, user) {
 		if (err) {

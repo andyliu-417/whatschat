@@ -30,7 +30,7 @@ class ContactList extends Component {
           itemLayout="horizontal"
           dataSource={contacts}
           renderItem={item => (
-            <List.Item onClick={()=>this.props.history.push(`/chat/${item.username}`)}>
+            <List.Item onClick={()=>this.props.history.push(`/chat/${item._id}`)}>
               <List.Item.Meta
                 avatar={
                   <Badge count={5}>
