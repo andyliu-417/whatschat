@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./Chat.css";
-import { Layout, Menu, Icon, Modal } from "antd";
+import { Layout, Menu, Icon } from "antd";
 import ChatPanel from "../../components/ChatPanel/ChatPanel";
 import browserCookie from "browser-cookies";
 import { connect } from "react-redux";
 import { logout } from "../../redux/user.redux";
 import { Redirect } from "react-router-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Contacts from "../Contacts/Contacts";
 
 const { Content, Sider } = Layout;

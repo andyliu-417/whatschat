@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Contacts.css";
 import { connect } from "react-redux";
 import { getFriendList } from "../../redux/friend.redux";
-import { List, Avatar, Badge } from "antd";
+import { List, Avatar } from "antd";
 
 // import {getMsgList} from '../../redux/chat.redux';
 
@@ -39,7 +39,7 @@ class Contacts extends Component {
                       src={require(`../../components/avatars/${item.avatar}.png`)}
                     />
                 }
-                title={<h5>{item.username}</h5>}
+                title={item.username}
                 // description="last msg"
               />
             </List.Item>

@@ -3,13 +3,9 @@ import "./ContactList.css";
 import { List, Avatar, Badge } from "antd";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { getFriendList } from "../../redux/friend.redux";
 import {getMsgList, recvMsg} from '../../redux/chat.redux';
 
-// @connect(
-// 	state=>state.friend,
-// 	{getFriendList}
-// )
+
 @connect(state => state, {getMsgList, recvMsg})
 @withRouter
 class ContactList extends Component {
@@ -42,7 +38,6 @@ class ContactList extends Component {
       return b_last - a_last;
     });
     
-    const contacts = this.props.friendList;
     const userid = this.props.user._id;
     const userInfo = this.props.chat.users;
     

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./ChatPanel.css";
 import { Layout } from "antd";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import ContactList from "../ContactList/ContactList";
 import ChatHeader from "../ChatHeader/ChatHeader";
