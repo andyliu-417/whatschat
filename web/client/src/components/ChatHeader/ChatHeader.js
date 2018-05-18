@@ -17,6 +17,8 @@ class ChatHeader extends Component {
   componentDidMount() {
     if (!this.props.chatmsg.length) {
       this.props.getMsgList();
+      this.props.recvMsg();
+      
     }
   }
   render() {
@@ -28,9 +30,7 @@ class ChatHeader extends Component {
     return (
       <div className="contacttitle-component">
         <div className="content-wrap">
-        {/* {this.props.match.params.user} */}
         {users[userid].username}
-        {/* {this.props.friendList.filter(v=>v._id==userid).username} */}
         </div>
       </div>
     );

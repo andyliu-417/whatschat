@@ -15,8 +15,10 @@ class ChatHistory extends Component {
 
   componentDidMount() {
     if (!this.props.chatmsg.length) {
-      this.props.getMsgList();
-      this.props.recvMsg();
+      console.log("length 0 ");
+      
+      // this.props.getMsgList();
+      // this.props.recvMsg();
     }
   }
 
@@ -27,7 +29,11 @@ class ChatHistory extends Component {
       v => v.from === userid || v.to === userid
     );
     const users = this.props.users;
+    console.log(users);
+    
     if (!users[userid]) {
+      console.log("null");
+      
       return null;
     }
 
