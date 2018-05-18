@@ -2,16 +2,17 @@ import React, { Component } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "../../redux/user.redux";
-import {Redirect} from 'react-router-dom';
+import { login, clearErrMsg } from "../../redux/user.redux";
+import { Redirect } from "react-router-dom";
+import { message } from "antd";
 
-@connect(state => state.user, { login })
+@connect(state => state.user, { login, clearErrMsg })
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      pwd: ''
+      username: "",
+      pwd: ""
     };
   }
 
@@ -27,18 +28,22 @@ class Login extends Component {
     const value = event.target.value;
 
     this.setState({ [field]: value });
+    if (this.props.msg) 
+      this.props.clearErrMsg();
   };
 
   render() {
     const path = this.props.location.pathname;
-    const redirect = this.props.redirectTo;
+    const { redirect, msg } = this.props;
     return (
       <div className="container">
-      {redirect&&redirect!==path? <Redirect to={this.props.redirectTo}></Redirect> :null}
+        {redirect && redirect !== path ? (
+          <Redirect to={this.props.redirectTo} />
+        ) : null}
         <div className="card-panel login-panel">
           <form className="col s12" action="/" onSubmit={this.handleSubmit}>
             <h4 className="center-align">Login</h4>
-
+            {msg ? message.error(msg) : null}
             <div className="row">
               <div className="input-field col s12">
                 <input

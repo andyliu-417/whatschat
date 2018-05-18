@@ -22,13 +22,13 @@ router.post("/register", function(req, res) {
   const { username, pwd, avatar } = req.body;
   User.findOne({ username }, function(err, doc) {
     if (doc) {
-      return res.json({ code: 1, msg: "用户名重复" });
+      return res.json({ code: 1, msg: "username exists" });
     }
 
     const userModel = new User({ username, pwd: util.md5Pwd(pwd), avatar });
     userModel.save(function(e, d) {
       if (e) {
-        return res.json({ code: 1, msg: "后端出错了" });
+        return res.json({ code: 1, msg: "error" });
       }
       // set cookie after register
       const { username, _id, avatar } = d;
@@ -45,7 +45,7 @@ router.post("/login", function(req, res) {
     doc
   ) {
     if (!doc) {
-      return res.json({ code: 1, msg: "用户名或者密码错误" });
+      return res.json({ code: 1, msg: "username or password incorrect" });
     }
     // set cookie after login
     res.cookie("userid", doc._id);
@@ -76,7 +76,7 @@ router.get("/info", function(req, res, next) {
   }
   User.findOne({ _id: userid }, _filter, function(err, doc) {
     if (err) {
-      return res.json({ code: 1, msg: "后端出错了" });
+      return res.json({ code: 1, msg: "error" });
     }
     if (doc) {
       return res.json({ code: 0, data: doc });
@@ -97,7 +97,7 @@ router.get("/getMsgList", function(req, res) {
   const userid = req.cookies.userid;
   User.findOne({ _id: userid }, _filter, function(err, user) {
     if (err) {
-      return res.json({ code: 1, msg: "后端出错了" });
+      return res.json({ code: 1, msg: "error" });
     }
     if (user) {
       Chat.find({ $or: [{ from: user._id }, { to: user._id }] }, function(

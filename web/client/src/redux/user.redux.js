@@ -4,11 +4,12 @@ const initState = {
   error: false,
   redirectTo: "",
   msg: "",
-  username: "",
+  username: ""
 };
 
 const AUTH_SUCCESS = "AUTH_SUCCESS";
 const ERROR_MSG = "ERROR_MSG";
+const CLEAR_ERR_MSG = "CLEAR_ERR_MSG";
 const LOAD_DATA = "LOAD_DATA";
 const LOGOUT = "LOGOUT";
 
@@ -17,7 +18,7 @@ export function user(state = initState, action) {
   switch (action.type) {
     case AUTH_SUCCESS:
       localStorage.setItem("userid", action.payload._id);
-      localStorage.setItem("username", action.payload.username);      
+      localStorage.setItem("username", action.payload.username);
       localStorage.setItem("avatar", action.payload.avatar);
       return {
         ...state,
@@ -30,6 +31,12 @@ export function user(state = initState, action) {
         ...state,
         msg: action.msg,
         error: true
+      };
+    case CLEAR_ERR_MSG:
+      return {
+        ...state,
+        msg: "",
+        error: false
       };
     case LOAD_DATA:
       return {
@@ -59,9 +66,13 @@ export function logout() {
   return { type: LOGOUT };
 }
 
+export function clearErrMsg() {
+  return { type: CLEAR_ERR_MSG };
+}
+
 export function login({ username, pwd }) {
   if (!username || !pwd) {
-    return error_msg("error");
+    return error_msg("username and password cannot be empty");
   }
 
   return dispatch => {
@@ -78,10 +89,10 @@ export function login({ username, pwd }) {
 export function regisger({ username, pwd, repeatpwd, avatar }) {
   // @andy_sync
   if (!username || !pwd) {
-    return error_msg("error");
+    return error_msg("username and password cannot be empty");
   }
   if (pwd !== repeatpwd) {
-    return error_msg("error");
+    return error_msg("password not same");
   }
 
   return dispatch => {
