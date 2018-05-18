@@ -5,6 +5,7 @@ import App from "./containers/App/App";
 import Login from "./containers/Login/Login";
 import Signup from "./containers/Signup/Signup";
 import Chat from "./containers/Chat/Chat";
+import Contacts from "./containers/Contacts/Contacts";
 
 
 class Routes extends React.Component {
@@ -15,9 +16,11 @@ class Routes extends React.Component {
           <Auth />
           <App />
           <Switch>
-            <Route path="/chat/:user" component={Chat} />
+            {/* <Route path="/chat/:user" component={Chat} /> */}
+            <Route exat path="/" component={Chat} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            {/* <Route path="/contacts" component={Contacts} /> */}
           </Switch>
         </div>
       </BrowserRouter>

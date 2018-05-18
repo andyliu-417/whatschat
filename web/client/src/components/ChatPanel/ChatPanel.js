@@ -24,7 +24,7 @@ class ChatPanel extends Component {
       <Layout className="view chat">
         <Sider className="chat-sider" collapsible={false}>
           {/* 聊天对象列表 */}
-          <ContactList contacts={this.state.contacts} />
+          <ContactList/>
         </Sider>
         <Content className="chat-content">
           <Layout className="view">

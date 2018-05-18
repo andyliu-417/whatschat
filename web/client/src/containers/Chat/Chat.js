@@ -6,6 +6,9 @@ import browserCookie from "browser-cookies";
 import { connect } from "react-redux";
 import { logout } from "../../redux/user.redux";
 import { Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Contacts from "../Contacts/Contacts";
+
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -24,9 +27,9 @@ class Chat extends Component {
   };
 
   render() {
-    const avatar = localStorage.getItem('avatar');
-    const username = localStorage.getItem('username');
-    
+    const avatar = localStorage.getItem("avatar");
+    const username = localStorage.getItem("username");
+
     return (
       <div className="chat-container">
         {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
@@ -44,9 +47,7 @@ class Chat extends Component {
                     </div>
                   }
                 >
-                  <Menu.Item key="setup1">
-                    {username}
-                  </Menu.Item>
+                  <Menu.Item key="setup1">{username}</Menu.Item>
                   <Menu.Item key="setup" disabled={true}>
                     <Icon type="setting" />设置
                   </Menu.Item>
@@ -58,12 +59,26 @@ class Chat extends Component {
             </div>
             <ul className="status">
               <li>
-                <Icon type="message" style={{ fontSize: 36, color: "white" }} />
+                <Icon
+                  type="contacts"
+                  style={{ fontSize: 36, color: "white" }}
+                  onClick={() => this.props.history.push("/contacts")}
+                />
+              </li>
+              <li>
+                <Icon
+                  type="message"
+                  style={{ fontSize: 36, color: "white" }}
+                  onClick={() => this.props.history.push("/chat")}
+                />
               </li>
             </ul>
           </Sider>
           <Content>
-            <ChatPanel />
+            <Switch>
+              <Route path="/contacts" component={Contacts} />
+              <Route path="/chat" component={ChatPanel} />
+            </Switch>
           </Content>
         </Layout>
       </div>

@@ -72,7 +72,8 @@ router.get('/info', function(req, res, next) {
 });
 
 router.get('/friendlist',function(req, res){
-	User.find({},function(err,doc){
+	const userid = req.cookies.userid;	
+	User.find({_id: {$ne: userid}},function(err,doc){
 		return res.json({code:0,data:doc});
 	})
 })

@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import "./ContactList.css";
 import { List, Avatar, Badge } from "antd";
-import Contact from "../Contact/Contact";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getFriendList } from "../../redux/friend.redux";
-// import {getMsgList} from '../../redux/chat.redux';
+import {getMsgList, recvMsg} from '../../redux/chat.redux';
 
 // @connect(
 // 	state=>state.friend,
 // 	{getFriendList}
 // )
-@connect(state => state)
+@connect(state => state, {getMsgList, recvMsg})
 @withRouter
 class ContactList extends Component {
   constructor(props) {
@@ -20,6 +19,11 @@ class ContactList extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.chat.chatmsg.length) {
+      this.props.getMsgList();
+      this.props.recvMsg();
+      
+    }
     // this.props.getFriendList();
   }
   getLastMsg(arr) {
@@ -57,7 +61,7 @@ class ContactList extends Component {
                     />
                     </Badge>
                   }
-                  title={<h5>{userInfo[targetid].username}</h5>}
+                  title={<span style={{color: "white"}}>{userInfo[targetid].username}</span>}
                   description={lastItem.content}
                 />
               </List.Item>

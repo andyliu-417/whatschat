@@ -28,6 +28,8 @@ export function getFriendList(type) {
       .get('/user/friendlist')
       .then(res => {
         if (res.data.code === 0) {
+          console.log(res.data.data);
+          
           dispatch(friendList(res.data.data));
         }
       });
