@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getFriendList } from "../../redux/friend.redux";
 import { List, Avatar } from "antd";
 
-
 @connect(
 	state=>state.friend,
 	{getFriendList}
@@ -19,7 +18,6 @@ class Contacts extends Component {
 
   render() {
     const contacts = this.props.friendList;
-
     return (
       <div className="contact-list">
         <List
@@ -38,7 +36,6 @@ class Contacts extends Component {
                     />
                 }
                 title={item.username}
-                // description="last msg"
               />
             </List.Item>
           )}

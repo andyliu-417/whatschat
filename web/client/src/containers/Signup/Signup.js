@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { regisger } from "../../redux/user.redux";
 import {Redirect} from 'react-router-dom';
-
-const avatarList = ['boy','girl','man','woman','hippopotamus','koala','lemur','tiger','whale'];
+import config from '../../config';
 
 @connect(state => state.user, { regisger })
 class Signup extends Component {
@@ -21,7 +20,7 @@ class Signup extends Component {
 
   componentDidMount() {
     const rdm = Math.floor(Math.random() * Math.floor(8))
-    this.setState({avatar: avatarList[rdm]});
+    this.setState({avatar: config.avatars[rdm]});
   }
 
   handleSubmit = event => {

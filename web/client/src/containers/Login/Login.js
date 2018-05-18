@@ -32,11 +32,11 @@ class Login extends Component {
   };
 
   render() {
+    const path = this.props.location.pathname;
+    const redirect = this.props.redirectTo;
     return (
       <div className="container">
-      {this.props.redirectTo
-          ? <Redirect to={this.props.redirectTo}/>
-          : null}
+      {redirect&&redirect!==path? <Redirect to={this.props.redirectTo}></Redirect> :null}
         <div className="card-panel login-panel">
           <form className="col s12" action="/" onSubmit={this.handleSubmit}>
             <h4 className="center-align">Login</h4>
