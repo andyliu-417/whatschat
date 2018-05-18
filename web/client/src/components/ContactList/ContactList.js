@@ -21,8 +21,7 @@ class ContactList extends Component {
   componentDidMount() {
     if (!this.props.chat.chatmsg.length) {
       this.props.getMsgList();
-      this.props.recvMsg();
-      
+      this.props.recvMsg(); 
     }
     // this.props.getFriendList();
   }
@@ -35,7 +34,13 @@ class ContactList extends Component {
       msgGroup[v.chatid] = msgGroup[v.chatid] || [];
       msgGroup[v.chatid].push(v);
     });
-    const chatList = Object.values(msgGroup);
+    // const chatList = Object.values(msgGroup);
+    const chatList = Object.values(msgGroup).sort((a,b) => {
+      const a_last = this.getLastMsg(a).create_time;
+      const b_last = this.getLastMsg(b).create_time;
+      return b_last - a_last;
+    });
+    
     const contacts = this.props.friendList;
     const userid = this.props.user._id;
     const userInfo = this.props.chat.users;
@@ -48,8 +53,7 @@ class ContactList extends Component {
           renderItem={item => {
             const lastItem = this.getLastMsg(item);
             const targetid = lastItem.from===userid?lastItem.to:lastItem.from;
-            const unreadNum = item.filter(v=>!v.read&&v.to===targetid).length;
-            console.log(unreadNum);
+            const unreadNum = item.filter(v=>!v.read&&v.from===targetid).length;
             return (
               <List.Item
               onClick={() => this.props.history.push(`/chat/${targetid}`)}

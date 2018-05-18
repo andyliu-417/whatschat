@@ -27,11 +27,8 @@ class ChatHistory extends Component {
       v => v.from === userid || v.to === userid
     );
     const users = this.props.users;
-    console.log(users);
     
     if (!users[userid]) {
-      console.log("null");
-      
       return null;
     }
 
