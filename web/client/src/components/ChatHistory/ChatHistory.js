@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Spin, List, Avatar } from "antd";
 import { connect } from "react-redux";
-import {showTime} from '../../helpers/util';
+import {showTime, makeChatid} from '../../helpers/util';
 import { Col } from "antd";
 
 @connect(state => state.chat)
@@ -12,17 +12,14 @@ class ChatHistory extends Component {
   }
 
   render() {
+    const {chatmsg, users} = this.props;
     const avatar = localStorage.getItem('avatar');
     const userid = this.props.match.params.user;
     const me = localStorage.getItem('userid');
-    const chatid = [userid, me].sort().join("_");
-    const msgs = this.props.chatmsg.filter(
-      // v => v.from === userid || v.to === userid
+    const chatid = makeChatid(userid, me);
+    const msgs = chatmsg.filter(
       v=>v.chatid===chatid
     );
-    
-    
-    const users = this.props.users;
     
     if (!users[userid]) {
       return null;

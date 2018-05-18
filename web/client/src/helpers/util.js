@@ -12,3 +12,7 @@ export function showTime(milliseconds) {
   const m = moment(milliseconds);
   return m.format("HH:mm");
 }
+
+export function makeChatid(me, you) {
+  return [me, you].sort().join("_");
+}

@@ -14,16 +14,19 @@ class ContactList extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.chat.chatmsg.length) {
-      this.props.getMsgList();
-      this.props.recvMsg();
+    const {chat, getMsgList, recvMsg} = this.props;
+    if (!chat.chatmsg.length) {
+      getMsgList();
+      recvMsg();
     }
   }
 
   render() {
+    const {user, chat} = this.props;
+
     const msgGroup = {};
     const me = localStorage.getItem('userid');
-    this.props.chat.chatmsg.forEach(v => {
+    chat.chatmsg.forEach(v => {
       if (v.chatid.indexOf(me) > -1) {
         msgGroup[v.chatid] = msgGroup[v.chatid] || [];
         msgGroup[v.chatid].push(v);
@@ -33,8 +36,8 @@ class ContactList extends Component {
     const chatList = Object.values(msgGroup).sort(compare());
     console.log(chatList);
 
-    const userid = this.props.user._id;
-    const userInfo = this.props.chat.users;
+    const userid = user._id;
+    const userInfo = chat.users;
 
     return (
       <div className="contact-list">

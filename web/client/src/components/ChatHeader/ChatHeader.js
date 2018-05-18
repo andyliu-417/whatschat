@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Avatar } from "antd";
 import { connect } from "react-redux";
-import { getMsgList } from "../../redux/chat.redux";
 import { readMsg } from "../../redux/chat.redux";
 import {compare} from '../../helpers/util';
 
-@connect(state => state.chat, { getMsgList, readMsg })
+@connect(state => state.chat, { readMsg })
 class ChatHeader extends Component {
   constructor(props) {
     super(props);

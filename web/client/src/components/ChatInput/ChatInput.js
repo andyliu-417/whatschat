@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { Input, message } from "antd";
 import { connect } from "react-redux";
-import { sendMsg, readMsg } from "../../redux/chat.redux";
+import { sendMsg } from "../../redux/chat.redux";
 const { TextArea } = Input;
 
-@connect(state => state, { sendMsg, readMsg })
+@connect(state => state, { sendMsg })
 class ChatInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
       content: "",
-      msg: []
     };
   }
 
@@ -23,11 +22,11 @@ class ChatInput extends Component {
       }, 0);
       return;
     }
-
-    const from = this.props.user._id;
+    const {user, sendMsg} = this.props;
+    const from = user._id;
     const to = this.props.match.params.user;
     const msg = verifyContent;
-    this.props.sendMsg({ from, to, msg });
+    sendMsg({ from, to, msg });
     this.setState({ content: "" });
   };
 
@@ -40,9 +39,6 @@ class ChatInput extends Component {
       return true;
     } else {
       this.handleInput();
-
-      // const to = this.props.match.params.user;
-      // this.props.readMsg(to);
     }
   };
   render() {
