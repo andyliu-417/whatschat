@@ -34,11 +34,11 @@ class Login extends Component {
 
   render() {
     const path = this.props.location.pathname;
-    const { redirect, msg } = this.props;
+    const { redirectTo, msg } = this.props;
     return (
       <div className="container">
-        {redirect && redirect !== path ? (
-          <Redirect to={this.props.redirectTo} />
+        {redirectTo && redirectTo !== path ? (
+          <Redirect to={redirectTo} />
         ) : null}
         <div className="card-panel login-panel">
           <form className="col s12" action="/" onSubmit={this.handleSubmit}>

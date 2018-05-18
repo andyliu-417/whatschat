@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "./Signup.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { regisger } from "../../redux/user.redux";
+import { regisger, clearErrMsg } from "../../redux/user.redux";
 import {Redirect} from 'react-router-dom';
 import config from '../../config';
+import { message } from "antd";
 
-@connect(state => state.user, { regisger })
+@connect(state => state.user, { regisger, clearErrMsg })
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -33,15 +34,20 @@ class Signup extends Component {
     const value = event.target.value;
 
     this.setState({ [field]: value });
+    if (this.props.msg) 
+      this.props.clearErrMsg();
   };
 
   render() {
+    const { redirectTo, msg } = this.props;
     return (
       <div className="container">
-        {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
+        {redirectTo ? <Redirect to={redirectTo} /> : null}
         <div className="card-panel signup-panel">
           <form className="col s12" action="/" onSubmit={this.handleSubmit}>
             <h4 className="center-align">Sign Up</h4>
+            {msg ? message.error(msg) : null}
+            
             <div className="row">
               <div className="input-field col s12">
                 <input
