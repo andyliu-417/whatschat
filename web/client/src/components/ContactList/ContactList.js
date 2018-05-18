@@ -7,9 +7,12 @@ import {connect} from 'react-redux';
 import {getFriendList} from '../../redux/friend.redux';
 // import {getMsgList} from '../../redux/chat.redux';
 
+// @connect(
+// 	state=>state.friend,
+// 	{getFriendList}
+// )
 @connect(
-	state=>state.friend,
-	{getFriendList}
+	state=>state,
 )
 @withRouter
 class ContactList extends Component {
@@ -19,10 +22,16 @@ class ContactList extends Component {
   }
 
   componentDidMount() {
-    this.props.getFriendList();
+    // this.props.getFriendList();
   }
 
   render() {
+    const msgGroup = {};
+    this.props.chat.chatmsg.forEach(v => {
+      msgGroup[v.chatid] = msgGroup[v.chatid] || [];
+      msgGroup[v.chatid].push(v);
+    });
+    console.log(msgGroup);
     const contacts = this.props.friendList;
     
     return (
@@ -44,8 +53,8 @@ class ContactList extends Component {
                   </Badge>
 
                 }
-                title={item.username}
-                description="last msg"
+                title={<h5>{item.username}</h5>}
+                // description="last msg"
               />
             </List.Item>
           )}
