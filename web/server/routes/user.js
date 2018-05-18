@@ -20,7 +20,6 @@ router.get("/list", function(req, res) {
 
 router.post("/register", function(req, res) {
   const { username, pwd, avatar } = req.body;
-  console.log(username, avatar);
   User.findOne({ username }, function(err, doc) {
     if (doc) {
       return res.json({ code: 1, msg: "用户名重复" });
@@ -62,8 +61,6 @@ router.post("/readmsg", function(req, res) {
     { $set: { read: true } },
     { multi: true },
     function(err, doc) {
-	console.log(doc);
-	
       if (!err) {
         return res.json({ code: 0 });
       }

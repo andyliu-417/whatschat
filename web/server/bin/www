@@ -26,9 +26,7 @@ app.set("port", port);
 var server = http.Server(app);
 var io = require("socket.io")(server);
 io.on("connection", function(socket) {
-  // console.log('user login');
   socket.on("sendmsg", function(data) {
-    console.log(data);
     const { from, to, msg } = data;
     const chatid = [from, to].sort().join("_");
     const create_time = new Date().getTime();

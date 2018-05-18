@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { Input, message } from "antd";
-// import io from "socket.io-client";
 import { connect } from "react-redux";
 import { sendMsg, readMsg } from "../../redux/chat.redux";
-
-// const socket = io("ws://localhost:5000");
 const { TextArea } = Input;
 
 @connect(state => state, { sendMsg, readMsg })
@@ -17,34 +14,27 @@ class ChatInput extends Component {
     };
   }
 
-  // 输入聊天内容
   handleInput = () => {
     const verifyContent = this.state.content.trim();
     if (!verifyContent) {
-      message.error("内容不能输入为空");
-      // 消除 onchange 回车字符
+      message.error("cannot send empty");
       setTimeout(() => {
         this.setState({ content: "" });
       }, 0);
       return;
     }
-    // 发送消息
-    // 消除 onchange 会车字符
-    // socket.emit("sendmsg", { content: this.state.content });
+
     const from = this.props.user._id;
     const to = this.props.match.params.user;
     const msg = verifyContent;
-    console.log(to);
-
     this.props.sendMsg({ from, to, msg });
-
     this.setState({ content: "" });
   };
-  // 输入字符时变化内容
+
   handleChange = e => {
     this.setState({ content: e.target.value });
   };
-  // 监听回车键
+
   handleEnter = e => {
     if (e.shiftKey) {
       return true;
@@ -58,7 +48,6 @@ class ChatInput extends Component {
   render() {
     return (
       <div className="chatinput-component">
-        {/* 输入框 */}
         <div className="input-wrap">
           <TextArea
             style={{
@@ -70,7 +59,7 @@ class ChatInput extends Component {
             }}
             value={this.state.content}
             ref={textArea => textArea && textArea.focus()}
-            placeholder="按Enter回车即可发送消息"
+            placeholder="Press enter to send message"
             onChange={this.handleChange}
             onPressEnter={this.handleEnter}
           />
