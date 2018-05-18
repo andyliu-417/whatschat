@@ -4,9 +4,9 @@ import { Avatar } from "antd";
 
 import { connect } from "react-redux";
 import { getMsgList } from "../../redux/chat.redux";
-import { recvMsg } from "../../redux/chat.redux";
+import { readMsg } from "../../redux/chat.redux";
 
-@connect(state => state.chat, { getMsgList, recvMsg })
+@connect(state => state.chat, { getMsgList, readMsg })
 class ChatHeader extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +18,8 @@ class ChatHeader extends Component {
       this.props.getMsgList();
       // this.props.recvMsg();
     }
+    const to = this.props.match.params.user;
+    this.props.readMsg(to);
   }
   render() {
     const userid = this.props.match.params.user;

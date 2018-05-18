@@ -19,18 +19,25 @@ export function chat(state = initState, action) {
       return {
         ...state,
         chatmsg: action.payload.msgs,
-        unread: action.payload.msgs.filter(v => !v.read&&v.to===action.payload.userid).length,
+        unread: action.payload.msgs.filter(
+          v => !v.read && v.to === action.payload.userid
+        ).length,
         users: action.payload.users
       };
     case MSG_RECV:
-    console.log("unread", state.unread);
-    
       return {
         ...state,
         chatmsg: [...state.chatmsg, action.payload],
         unread: state.unread + 1
       };
-    // case MSG_READ:
+    case MSG_READ:
+    return {
+        ...state,
+        chatmsg:state.chatmsg.map(v=>{
+            v.read = true;
+            return v;
+        }),
+    };
     default:
       return state;
   }
@@ -48,6 +55,21 @@ export function recvMsg() {
     socket.on("recvmsg", function(data) {
       console.log("recvmsg", data);
       dispatch(msgRecv(data));
+    });
+  };
+}
+
+function msgRead({ from, userid }) {
+  return { type: MSG_READ, payload: { from, userid } };
+}
+
+export function readMsg(from) {
+  return (dispatch, getState) => {
+    axios.post("/user/readmsg", { from }).then(res => {
+      const userid = getState().user._id;
+      if (res.status === 200 && res.data.code === 0) {
+        dispatch(msgRead({from, userid}));
+      }
     });
   };
 }

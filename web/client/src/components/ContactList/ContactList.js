@@ -44,7 +44,6 @@ class ContactList extends Component {
     const contacts = this.props.friendList;
     const userid = this.props.user._id;
     const userInfo = this.props.chat.users;
-    console.log(chatList);
     
     return (
       <div className="contact-list">
