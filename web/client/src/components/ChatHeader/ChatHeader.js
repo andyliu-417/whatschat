@@ -17,7 +17,6 @@ class ChatHeader extends Component {
   componentDidMount() {
     if (!this.props.chatmsg.length) {
       this.props.getMsgList();
-      this.props.recvMsg();
     }
   }
   render() {

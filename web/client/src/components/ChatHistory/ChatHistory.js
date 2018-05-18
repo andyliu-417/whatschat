@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { getMsgList } from "../../redux/chat.redux";
 import { recvMsg } from "../../redux/chat.redux";
 
-
 @connect(state => state.chat, { getMsgList, recvMsg })
 class ChatHistory extends Component {
   constructor(props) {
@@ -22,8 +21,16 @@ class ChatHistory extends Component {
   }
 
   render() {
+    const avatar = localStorage.getItem('avatar');
     const userid = this.props.match.params.user;
-    const msgs = this.props.chatmsg.filter(v=>(v.from===userid || v.to===userid));
+    const msgs = this.props.chatmsg.filter(
+      v => v.from === userid || v.to === userid
+    );
+    const users = this.props.users;
+    if (!users[userid]) {
+      return null;
+    }
+
     return (
       <div className="chat-frame">
         <Spin size="large" className="chat-frame-spin" spinning={false} />
@@ -37,19 +44,29 @@ class ChatHistory extends Component {
               <List.Item>
                 <List.Item.Meta
                   avatar={
-                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                    <Avatar
+                      src={require(`../avatars/${users[userid].avatar}.png`)}
+                    />
                   }
                   title={item.create_time}
                   description={item.content}
                 />
               </List.Item>
             ) : (
-              <List.Item>{item.content}</List.Item>
+              <List.Item>
+                <List.Item.Meta
+                  avatar={
+                    <Avatar
+                      src={require(`../avatars/${avatar}.png`)}
+                    />
+                  }
+                  title={item.create_time}
+                  description={item.content}
+                />
+              </List.Item>
             )
           }
         />
-
-        
       </div>
     );
   }

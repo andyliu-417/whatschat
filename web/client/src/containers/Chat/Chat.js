@@ -24,7 +24,7 @@ class Chat extends Component {
   };
 
   render() {
-    const avatart = localStorage.getItem('avatar');
+    const avatar = localStorage.getItem('avatar');
     const username = localStorage.getItem('username');
     
     return (
@@ -39,7 +39,7 @@ class Chat extends Component {
                     <div className="avatar">
                       <img
                         alt="用户"
-                        src={require(`../../components/avatars/${avatart}.png`)}
+                        src={require(`../../components/avatars/${avatar}.png`)}
                       />
                     </div>
                   }
