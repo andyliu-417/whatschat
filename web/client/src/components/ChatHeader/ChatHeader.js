@@ -21,6 +21,7 @@ class ChatHeader extends Component {
     const to = this.props.match.params.user;
     this.props.readMsg(to);
   }
+
   render() {
     const userid = this.props.match.params.user;
     const users = this.props.users;

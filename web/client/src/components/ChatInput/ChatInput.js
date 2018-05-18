@@ -3,14 +3,14 @@ import "./ChatInput.css";
 import { Input, message } from "antd";
 // import io from "socket.io-client";
 import {connect} from 'react-redux';
-import {sendMsg} from '../../redux/chat.redux';
+import {sendMsg, readMsg} from '../../redux/chat.redux';
 
 // const socket = io("ws://localhost:5000");
 const { TextArea } = Input;
 
 @connect(
 	state=>state,
-	{sendMsg}
+	{sendMsg, readMsg}
 )
 class ChatInput extends Component {
   constructor(props) {
@@ -21,15 +21,7 @@ class ChatInput extends Component {
     };
   }
 
-  componentDidMount() {
-    // socket.on("recvmsg", (data) => {
-    //   this.setState({
-    //     msg: [...this.state.msg, data.content]
-    //   });
-    //   console.log(data);
-    // });
-  }
-
+  
   // 输入聊天内容
   handleInput = () => {
     const verifyContent = this.state.content.trim();
@@ -57,6 +49,9 @@ class ChatInput extends Component {
   // 输入字符时变化内容
   handleChange = e => {
     this.setState({ content: e.target.value });
+
+    const to = this.props.match.params.user;
+    this.props.readMsg(to);
   };
   // 监听回车键
   handleEnter = e => {
