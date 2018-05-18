@@ -18,7 +18,7 @@ class Auth extends React.Component {
   }
 
   componentDidMount() {
-    const publicList = ["/login", "/register"];
+    const publicList = ["/login", "/signup"];
     const pathname = this.props.location.pathname;
     if (publicList.indexOf(pathname) > -1) {
       return null;

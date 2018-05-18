@@ -19,14 +19,14 @@ router.get('/list',function(req, res){
 });
 
 router.post('/register', function(req, res){
-  const {username, pwd} = req.body;
+  const {username, pwd, avatar} = req.body;
   console.log(username, pwd);
 	User.findOne({username}, function(err,doc){
 		if (doc) {
 			return res.json({code:1, msg:'用户名重复'});
 		}
     
-		const userModel = new User({username, pwd: util.md5Pwd(pwd)});
+		const userModel = new User({username, pwd: util.md5Pwd(pwd), avatar});
 		userModel.save(function(e,d){
 			if (e) {
 				return res.json({code:1,msg:'后端出错了'});

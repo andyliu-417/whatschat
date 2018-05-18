@@ -72,7 +72,7 @@ export function login({ username, pwd }) {
   };
 }
 
-export function regisger({ username, pwd, repeatpwd }) {
+export function regisger({ username, pwd, repeatpwd, avatar}) {
   // @andy_sync
   if (!username || !pwd) {
     return error_msg("用户名密码必须输入");
@@ -81,11 +81,13 @@ export function regisger({ username, pwd, repeatpwd }) {
     return error_msg("密码和确认密码不同");
   }
 
+  
   console.log(username, pwd);
 
   // @andy_async
   return dispatch => {
-    axios.post("/user/register", { username, pwd }).then(res => {
+
+    axios.post("/user/register", { username, pwd, avatar }).then(res => {
       if (res.status === 200 && res.data.code === 0) {
         dispatch(auth_success(res.data.data));
       } else {

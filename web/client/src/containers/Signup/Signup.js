@@ -5,6 +5,13 @@ import { connect } from "react-redux";
 import { regisger } from "../../redux/user.redux";
 import {Redirect} from 'react-router-dom';
 
+const avatarList = 'boy,girl,man,woman,hippopotamus,koala,lemur,tiger,whale'
+      .split(',')
+      .map(v => ({
+        icon: require(`../../components/avatars/${v}.png`),
+        text: v
+      }));
+
 @connect(state => state.user, { regisger })
 class Signup extends Component {
   constructor(props) {
@@ -12,7 +19,8 @@ class Signup extends Component {
     this.state = {
       username: "",
       pwd: "",
-      repeatpwd: ""
+      repeatpwd: "",
+      avatar: ""
     };
   }
 
@@ -21,7 +29,7 @@ class Signup extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state.username);
-
+    this.setState({avatar: avatarList[Math.floor(Math.random() * Math.floor(8))].text});
     this.props.regisger(this.state);
   };
 

@@ -44,7 +44,7 @@ class ContactList extends Component {
 
                 }
                 title={item.username}
-                description=" is refined by Ant UED Team"
+                description="last msg"
               />
             </List.Item>
           )}
