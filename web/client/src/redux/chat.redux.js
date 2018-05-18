@@ -41,17 +41,18 @@ export function chat(state = initState, action) {
 function msgRecv(msg, msgs) {
   let flag = true;
   msgs.forEach(v => {
-      if (v._id === msg._id) {
-        flag = false;
-      }
+    if (v._id === msg._id) {
+      flag = false;
+    }
   });
-  return flag?({ type: MSG_RECV, payload: msg }):null;
+  return flag ? { type: MSG_RECV, payload: msg } : null;
 }
 
 export function recvMsg() {
   return (dispatch, getState) => {
+    const chatmsgs = getState().chat.chatmsg;
     socket.on("recvmsg", function(data) {
-      dispatch(msgRecv(data, getState().chat.chatmsg));
+      dispatch(msgRecv(data, chatmsgs));
     });
   };
 }
