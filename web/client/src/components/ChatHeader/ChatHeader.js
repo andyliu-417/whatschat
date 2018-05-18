@@ -3,6 +3,7 @@ import { Avatar } from "antd";
 import { connect } from "react-redux";
 import { getMsgList } from "../../redux/chat.redux";
 import { readMsg } from "../../redux/chat.redux";
+import {compare} from '../../helpers/util';
 
 @connect(state => state.chat, { getMsgList, readMsg })
 class ChatHeader extends Component {
@@ -15,13 +16,21 @@ class ChatHeader extends Component {
     if (!this.props.chatmsg.length) {
       this.props.getMsgList();
     }
-    const to = this.props.match.params.user;
-    this.props.readMsg(to);
+    // const to = this.props.match.params.user;
+    // this.props.readMsg(to);
   }
 
   render() {
     const userid = this.props.match.params.user;
-    const users = this.props.users;
+    const {users, chatmsg} = this.props;
+    const lastMsg = chatmsg[chatmsg.length-1];
+    if (lastMsg) {
+      if (lastMsg.from === userid && lastMsg.read === false) {
+        console.log('new msg read');
+        this.props.readMsg(userid);
+      }
+    }
+
     if (!users[userid]) {
       return null;
     }

@@ -41,8 +41,8 @@ class ChatInput extends Component {
     } else {
       this.handleInput();
 
-      const to = this.props.match.params.user;
-      this.props.readMsg(to);
+      // const to = this.props.match.params.user;
+      // this.props.readMsg(to);
     }
   };
   render() {
