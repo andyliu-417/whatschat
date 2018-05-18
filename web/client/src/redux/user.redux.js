@@ -5,13 +5,12 @@ const initState = {
   redirectTo: "",
   msg: "",
   username: "",
-  avatar: ""
 };
 
 const AUTH_SUCCESS = "AUTH_SUCCESS";
 const ERROR_MSG = "ERROR_MSG";
 const LOAD_DATA = "LOAD_DATA";
-const LOGOUT = 'LOGOUT'
+const LOGOUT = "LOGOUT";
 
 function auth_success(data) {
   return { type: AUTH_SUCCESS, payload: data };
@@ -28,12 +27,13 @@ function load_data(data) {
 export function user(state = initState, action) {
   switch (action.type) {
     case AUTH_SUCCESS:
+      localStorage.setItem("username", action.payload.username);
+      localStorage.setItem("avatar", action.payload.avatar);
       return {
         ...state,
         msg: "",
         ...action.payload,
-        redirectTo: "/chat/"+action.payload.username,
-        avatar: action.payload.avatar
+        redirectTo: "/chat/" + action.payload.username
       };
     case ERROR_MSG:
       return {
@@ -46,14 +46,14 @@ export function user(state = initState, action) {
         ...state,
         ...action.payload
       };
-      case LOGOUT:
-			return {...initState,redirectTo:'/login'}
+    case LOGOUT:
+      return { ...initState, redirectTo: "/login" };
     default:
       return state;
   }
 }
-export function logout(){
-	return { type:LOGOUT }
+export function logout() {
+  return { type: LOGOUT };
 }
 export function login({ username, pwd }) {
   // @andy_sync
@@ -73,7 +73,7 @@ export function login({ username, pwd }) {
   };
 }
 
-export function regisger({ username, pwd, repeatpwd, avatar}) {
+export function regisger({ username, pwd, repeatpwd, avatar }) {
   // @andy_sync
   if (!username || !pwd) {
     return error_msg("用户名密码必须输入");
@@ -86,7 +86,6 @@ export function regisger({ username, pwd, repeatpwd, avatar}) {
 
   // @andy_async
   return dispatch => {
-
     axios.post("/user/register", { username, pwd, avatar }).then(res => {
       if (res.status === 200 && res.data.code === 0) {
         dispatch(auth_success(res.data.data));

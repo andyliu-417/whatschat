@@ -24,6 +24,9 @@ class Chat extends Component {
   };
 
   render() {
+    const avatart = localStorage.getItem('avatar');
+    const username = localStorage.getItem('username');
+    
     return (
       <div className="chat-container">
         {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
@@ -36,13 +39,13 @@ class Chat extends Component {
                     <div className="avatar">
                       <img
                         alt="用户"
-                        src={require(`../../components/avatars/${this.props.avatar}.png`)}
+                        src={require(`../../components/avatars/${avatart}.png`)}
                       />
                     </div>
                   }
                 >
                   <Menu.Item key="setup1">
-                    {this.props.username}
+                    {username}
                   </Menu.Item>
                   <Menu.Item key="setup" disabled={true}>
                     <Icon type="setting" />设置
