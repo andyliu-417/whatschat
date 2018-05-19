@@ -48,11 +48,17 @@ One of the existing user in database:
 ## <a name="done"></a> Done list
 
 - [x] Login and Signup
+<img  src="https://github.com/Jjunxi/whatschat/blob/master/screenshots/Screen%20Shot%202018-05-18%20at%2011.43.28%20PM.png?raw=true" />
+<img  src="https://github.com/Jjunxi/whatschat/blob/master/screenshots/Screen%20Shot%202018-05-18%20at%2011.56.27%20PM.png?raw=true" />
 - [x] Contacts
+<img  src="https://github.com/Jjunxi/whatschat/blob/master/screenshots/Screen%20Shot%202018-05-18%20at%2011.43.51%20PM.png?raw=true" />
 - [x] Messages
 - Chat history stored in MongoDB
 - Real time unread messages notification
 - Messages sorted by time
+<img  src="https://github.com/Jjunxi/whatschat/blob/master/screenshots/Screen%20Shot%202018-05-18%20at%2011.44.14%20PM.png?raw=true" />
+<img  src="https://github.com/Jjunxi/whatschat/blob/master/screenshots/Screen%20Shot%202018-05-18%20at%2011.48.04%20PM.png?raw=true" />
+<img  src="https://github.com/Jjunxi/whatschat/blob/master/screenshots/Screen%20Shot%202018-05-18%20at%2011.52.07%20PM.png?raw=true" />
 
 
 ## <a name="followup"></a> Follow-ups
