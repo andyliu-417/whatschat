@@ -39,8 +39,11 @@ $ npm start
 ```
 
 Then open [http://localhost:3000/](http://localhost:3000/) to see the app.
+
 One of the existing user in database:
+
 **Username: jack**
+
 **Password: jack**
 
   
@@ -84,9 +87,8 @@ One of the existing user in database:
 
 License
 
-----
 MIT
 
-  
+----
 
 Good Luck! 🚀
