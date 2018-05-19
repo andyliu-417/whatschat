@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login, clearErrMsg, clearRedirect } from "../../redux/user.redux";
 import { Redirect } from "react-router-dom";
