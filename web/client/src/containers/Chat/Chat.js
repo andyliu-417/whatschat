@@ -27,15 +27,15 @@ class Chat extends Component {
     const avatar = localStorage.getItem("avatar");
     const username = localStorage.getItem("username");
     if (!username) {
-      this.props.history.push('/login'); 
+      this.props.history.push('/login');
       return null;
     }
-    
+
     return (
       <div className="chat-container">
         {this.props.user.redirectTo ? <Redirect to={this.props.user.redirectTo} /> : null}
         <Layout className="view home">
-          <Sider width={70} style={{ background: "#00bfa5" }}>
+          <Sider width={70} style={{ background: "#3C4C80" }}>
             <div className="submenu">
               <Menu>
                 <SubMenu
@@ -76,7 +76,7 @@ class Chat extends Component {
               </li>
             </ul>
           </Sider>
-          <Content>
+          <Content style={{ background: '#F6F8FF' }}>
             <Switch>
               <Route path="/contacts" component={Contacts} />
               <Route path="/chat" component={ChatPanel} />

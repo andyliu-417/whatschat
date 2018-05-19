@@ -1,0 +1,90 @@
+/* chat history */
+.chat-history {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.chat-history .chatframe-spin {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+}
+.chat-history .chatframe-spin .ant-spin-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+.chat-history .history-item {
+  position: relative;
+  height: 60px;
+  border-bottom: 0;
+  border-top: 0;
+}
+.chat-history .left-item {
+  padding-left: 54px;
+}
+.chat-history .left-item .name-wrap {
+  left: 58px;
+  text-align: left;
+}
+.chat-history .left-item .avatar-wrap {
+  left: 12px;
+}
+.chat-history .right-item {
+  padding-right: 54px;
+}
+.chat-history .right-item .name-wrap{
+  right: 58px;
+  text-align: right;
+}
+.chat-history .right-item .avatar-wrap {
+  right: 12px;
+}
+.chat-history .history-item:last-child {
+  border-bottom: 0;
+}
+.chat-history .avatar-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.chat-history .avatar-wrap .ant-avatar > img {
+  border-radius: 50%;
+}
+.chat-history .name-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.chat-history .name-wrap h3 {
+  font-size: 14px;
+  font-weight: 100;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+  margin-bottom: 2px;
+  margin-top: 4px;
+}
+.chat-history .name-wrap p {
+  font-size: 12px;
+  color: #99ADEC;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+}

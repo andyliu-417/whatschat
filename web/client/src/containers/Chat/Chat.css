@@ -1,6 +1,6 @@
 /* chat */
 .chat-container {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
 }
 .home {
@@ -48,7 +48,6 @@
 /* chat */
 .chat-sider {
   width: 240px;
-  background: #5CC3BF;
 }
 .chat-content {
   background: #5CC3BF;

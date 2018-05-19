@@ -1,0 +1,26 @@
+/* chat */
+.chat-sider {
+  width: 240px;
+  background: #52649d;
+}
+.chat-content {
+  background: #52649d;
+}
+.chat-content .contact-title {
+  background: #fff;
+  height: 48px;
+  line-height: 48px;
+  padding: 0;
+}
+.chat-content .chat-frame {
+  position: relative;
+  background: #f6f8ff;
+}
+.chat-content .chat-input {
+  position: relative;
+  height: 120px;
+  min-height: 120px;
+  border-top: 1px solid #c7d1ed;
+  padding: 0;
+  background: #f6f8ff;
+}

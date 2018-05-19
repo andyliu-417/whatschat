@@ -27,7 +27,10 @@ class ChatInput extends Component {
     const to = this.props.match.params.user;
     const msg = verifyContent;
     sendMsg({ from, to, msg });
-    this.setState({ content: "" });
+    setTimeout(() => {
+      this.setState({ content: '' }, () => {
+      });
+    }, 0);
   };
 
   handleChange = e => {

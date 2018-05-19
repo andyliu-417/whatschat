@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getMsgList, recvMsg } from "../../redux/chat.redux";
 import { compare } from "../../helpers/util";
+import './ContactList.css';
 
 @connect(state => state, { getMsgList, recvMsg })
 @withRouter
@@ -40,7 +41,7 @@ class ContactList extends Component {
     const userInfo = chat.users;
 
     return (
-      <div className="contact-list">
+      <div className="contact-list" style={{ background: '#52649D' }}>
         <List
           dataSource={chatList}
           renderItem={item => {
@@ -52,25 +53,28 @@ class ContactList extends Component {
             return (
               <List.Item
                 onClick={() => this.props.history.push(`/chat/${targetid}`)}
+                className="contact-item"
               >
                 <List.Item.Meta
                   avatar={
-                    <Badge count={unreadNum}>
-                      <Avatar
-                        size="large"
-                        shape="circle"
-                        src={require(`../avatars/${
-                          userInfo[targetid].avatar
-                        }.png`)}
-                      />
-                    </Badge>
+                    <div className="avatar-wrap">
+                      <Badge count={unreadNum}>
+                        <Avatar
+                          size="large"
+                          shape="circle"
+                          src={require(`../avatars/${
+                            userInfo[targetid].avatar
+                          }.png`)}
+                        />
+                      </Badge>
+                    </div>
                   }
-                  title={
-                    <span style={{ color: "white" }}>
-                      {userInfo[targetid].username}
-                    </span>
+                  description={
+                    <div className="name-wrap">
+                      <h3>{userInfo[targetid].username}</h3>
+                      <p>{ lastItem.content }</p>
+                    </div>
                   }
-                  description={lastItem.content}
                 />
               </List.Item>
             );

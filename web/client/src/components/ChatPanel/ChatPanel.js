@@ -9,7 +9,7 @@ import ChatInput from "../ChatInput/ChatInput";
 const { Header, Content, Sider, Footer } = Layout;
 
 class ChatPanel extends Component {
-  
+
   render() {
     return (
       <Layout className="view chat">
@@ -22,19 +22,19 @@ class ChatPanel extends Component {
             <Header className="contact-title">
               <Route path="/chat/:user" component={ChatHeader} />
             </Header>
-          
+
             <Content style={{ background: "#F6F8FF" }}>
               <Layout className="view">
                 <Content className="chat-frame">
                   <Route path="/chat/:user" component={ChatHistory} />
                 </Content>
-                
+
                 <Footer className="chat-input">
                   <Route path="/chat/:user" component={ChatInput} />
                 </Footer>
               </Layout>
             </Content>
-          
+
           </Layout>
         </Content>
       </Layout>

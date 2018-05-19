@@ -39,6 +39,9 @@ $ npm start
 ```
 
 Then open [http://localhost:3000/](http://localhost:3000/) to see the app.
+One of the existing user in database:
+**Username: jack**
+**Password: jack**
 
   
 
@@ -48,7 +51,8 @@ Then open [http://localhost:3000/](http://localhost:3000/) to see the app.
 - [x] Contacts
 - [x] Messages
 - Chat history stored in MongoDB
-- Unread messages notification
+- Real time unread messages notification
+- Messages sorted by time
 
 
 ## <a name="followup"></a> Follow-ups
