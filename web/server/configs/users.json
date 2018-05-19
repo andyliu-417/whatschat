@@ -1,6 +1,5 @@
-{"_id":{"$oid":"5afe1e0fc3925a4aa0c91472"},"username":"jack","pwd":"68f68e11218c42ea0009fb1be322f5f0","avatar":"tiger","__v":0}
-{"_id":{"$oid":"5afe21291f8c354d4fb0711f"},"username":"david","pwd":"6d6b5c7f63b37d133c74b7de143c74b5","avatar":"girl","__v":0}
-{"_id":{"$oid":"5afe270d1f8c354d4fb07125"},"username":"peter","pwd":"03e734d7906d85dd3169c0b462be2a1d","avatar":"woman","__v":0}
-{"_id":{"$oid":"5aff0f01de50ad78af5b4d62"},"username":"tom","pwd":"81e9122bdab97205f7565c61afaee621","avatar":"lemur","__v":0}
-{"_id":{"$oid":"5aff0ff8de50ad78af5b4d63"},"username":"mike","pwd":"f40650f32608004c3e77b41bd34c603e","avatar":"hippopotamus","__v":0}
-{"_id":{"$oid":"5aff43124ef27091720a7ef5"},"username":"mat","pwd":"923039cb8df3f02d1a8786418cd85466","avatar":"boy","__v":0}
+{"_id":{"$oid":"5aff660a7c6eac9fd7a40777"},"username":"jack","pwd":"68f68e11218c42ea0009fb1be322f5f0","avatar":"girl","__v":0}
+{"_id":{"$oid":"5aff66597c6eac9fd7a40778"},"username":"lucy","pwd":"f6175bbf4ffcee8a1e58c5e5573faca5","avatar":"hippopotamus","__v":0}
+{"_id":{"$oid":"5aff66757c6eac9fd7a40779"},"username":"tom","pwd":"81e9122bdab97205f7565c61afaee621","avatar":"tiger","__v":0}
+{"_id":{"$oid":"5aff66847c6eac9fd7a4077a"},"username":"alex","pwd":"2567ff06a7f79d6e856b335958aae5cc","avatar":"woman","__v":0}
+{"_id":{"$oid":"5aff66967c6eac9fd7a4077b"},"username":"mike","pwd":"f40650f32608004c3e77b41bd34c603e","avatar":"tiger","__v":0}
