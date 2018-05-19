@@ -26,7 +26,11 @@ class Chat extends Component {
   render() {
     const avatar = localStorage.getItem("avatar");
     const username = localStorage.getItem("username");
-
+    if (!username) {
+      this.props.history.push('/login'); 
+      return null;
+    }
+    
     return (
       <div className="chat-container">
         {this.props.user.redirectTo ? <Redirect to={this.props.user.redirectTo} /> : null}

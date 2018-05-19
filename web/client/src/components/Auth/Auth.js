@@ -28,8 +28,11 @@ class Auth extends React.Component {
   }
 
   render() {
+    const userid = localStorage.getItem("userid");
+    
     return (
       <div>
+        {userid ? null : <Redirect to="/login" />}
         {this.props.error && this.state.otherPage ? (
           <Redirect to="/login" />
         ) : null}
