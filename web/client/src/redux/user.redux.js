@@ -12,6 +12,7 @@ const ERROR_MSG = "ERROR_MSG";
 const CLEAR_ERR_MSG = "CLEAR_ERR_MSG";
 const LOAD_DATA = "LOAD_DATA";
 const LOGOUT = "LOGOUT";
+const CLEAR_REDIRECT = "CLEAR_REDIRECT";
 
 // reducer
 export function user(state = initState, action) {
@@ -45,6 +46,8 @@ export function user(state = initState, action) {
       };
     case LOGOUT:
       return { ...initState, redirectTo: "/login" };
+    case CLEAR_REDIRECT:
+      return { ...initState};
     default:
       return state;
   }
@@ -118,4 +121,9 @@ export function loadData() {
       }
     });
   };
+}
+
+export function clearRedirect() {
+  console.log("clear redirect");
+  return { type: CLEAR_REDIRECT };
 }

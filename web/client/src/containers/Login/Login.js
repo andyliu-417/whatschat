@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { login, clearErrMsg } from "../../redux/user.redux";
+import { login, clearErrMsg, clearRedirect } from "../../redux/user.redux";
 import { Redirect } from "react-router-dom";
 import { message } from "antd";
 
-@connect(state => state.user, { login, clearErrMsg })
+@connect(state => state.user, { login, clearErrMsg, clearRedirect })
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +31,11 @@ class Login extends Component {
     if (this.props.msg) 
       this.props.clearErrMsg();
   };
+
+  handleClick = () => {
+    this.props.clearRedirect();
+    this.props.history.push("/signup");
+  }
 
   render() {
     const path = this.props.location.pathname;
@@ -77,13 +82,13 @@ class Login extends Component {
                 value="Log in"
               />
             </div>
-
+            </form>
+ 
             <div className="row">
               <p className="right-align">
-                New to here? <Link to="/signup">Sign Up</Link>
+                New to here? <a onClick={this.handleClick}>Sign Up</a>
               </p>
             </div>
-          </form>
         </div>
       </div>
     );
