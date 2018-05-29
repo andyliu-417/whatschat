@@ -4,11 +4,11 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getMsgList, recvMsg } from "../../redux/chat.redux";
 import { compare } from "../../helpers/util";
-import './ContactList.css';
+import './MsgList.css';
 
 @connect(state => state, { getMsgList, recvMsg })
 @withRouter
-class ContactList extends Component {
+class MsgList extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -85,4 +85,4 @@ class ContactList extends Component {
   }
 }
 
-export default ContactList;
+export default MsgList;

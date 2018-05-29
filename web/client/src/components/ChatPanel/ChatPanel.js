@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 import { Route } from "react-router-dom";
-import ContactList from "../ContactList/ContactList";
+import MsgList from "../MsgList/MsgList";
 import ChatHeader from "../ChatHeader/ChatHeader";
 import ChatHistory from "../ChatHistory/ChatHistory";
 import ChatInput from "../ChatInput/ChatInput";
@@ -14,7 +14,7 @@ class ChatPanel extends Component {
     return (
       <Layout className="view chat">
         <Sider className="chat-sider" collapsible={false}>
-          <ContactList/>
+          <MsgList/>
         </Sider>
         <Content className="chat-content">
           <Layout className="view">
